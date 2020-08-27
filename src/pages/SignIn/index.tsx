@@ -3,6 +3,7 @@ import {TouchableOpacity, TextInput} from 'react-native'
 import {FormHandles} from '@unform/core'
 import {useNavigation} from '@react-navigation/native'
 
+import {useAuth} from '../../hooks/auth'
 import logo from '../../assets/logo.png'
 import Input from '../../components/Input'
 
@@ -22,8 +23,10 @@ const SignIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null)
   const passwordInputRef = useRef<TextInput>(null)
 
+  const {signIn} = useAuth()
+
   const handleSignIn = useCallback((data) => {
-    console.log(data)
+    signIn({email: data.email, password: data.password})
   }, [])
 
   return (
