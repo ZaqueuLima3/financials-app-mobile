@@ -1,9 +1,7 @@
 import React, {useRef, useCallback} from 'react'
-import {StatusBar, TouchableOpacity, TextInput} from 'react-native'
+import {TouchableOpacity, TextInput} from 'react-native'
 import {FormHandles} from '@unform/core'
 import {useNavigation} from '@react-navigation/native'
-
-import Icon from 'react-native-vector-icons/Feather'
 
 import logo from '../../assets/logo.png'
 import Input from '../../components/Input'
@@ -30,7 +28,6 @@ const SignIn: React.FC = () => {
 
   return (
     <Container>
-      <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
       <Logo source={logo} />
 
       <Title>Faça seu login</Title>
