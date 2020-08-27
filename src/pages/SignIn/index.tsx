@@ -1,12 +1,44 @@
-import React from 'react';
-import {Text, View} from 'react-native';
+import React from 'react'
+import {StatusBar} from 'react-native'
+
+import logo from '../../assets/logo.png'
+
+import {
+  Container,
+  Logo,
+  Title,
+  Form,
+  TextInput,
+  Button,
+  ButtonText,
+  SmallText,
+  Footer,
+} from './styles'
 
 const SignIn: React.FC = () => {
   return (
-    <View style={{margin: 60}}>
-      <Text style={{fontFamily: 'Montserrat-Bold', fontSize: 28}}>SignIn</Text>
-    </View>
-  );
-};
+    <Container>
+      <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
+      <Logo source={logo} />
 
-export default SignIn;
+      <Title>Faça seu login</Title>
+
+      <Form>
+        <TextInput placeholder="Digite seu e-mail" />
+        <TextInput placeholder="Sua senha secreta" />
+
+        <Button onPress={() => {}}>
+          <ButtonText>Enriquecer</ButtonText>
+        </Button>
+
+        <SmallText>Esqueci minha senha</SmallText>
+      </Form>
+
+      <Footer>
+        <SmallText>Criar uma nova conta</SmallText>
+      </Footer>
+    </Container>
+  )
+}
+
+export default SignIn
