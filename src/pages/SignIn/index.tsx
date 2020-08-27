@@ -1,8 +1,12 @@
 import React from 'react';
-import {Text} from 'react-native';
+import {Text, View} from 'react-native';
 
 const SignIn: React.FC = () => {
-  return <Text>SignIn</Text>;
+  return (
+    <View style={{margin: 60}}>
+      <Text style={{fontFamily: 'Montserrat-Bold', fontSize: 28}}>SignIn</Text>
+    </View>
+  );
 };
 
 export default SignIn;
