@@ -1,11 +1,32 @@
-import React from 'react'
-import {Text, SafeAreaView} from 'react-native'
+import React, {useCallback} from 'react'
+import {FlatList, StatusBar} from 'react-native'
+
+import CardResume from '../../components/CardResume'
+
+import {Container, Header, CardsWrapper} from './styles'
+
+import {dataCardsResume} from './mockData'
 
 const Dashboard: React.FC = () => {
+  const handleRenderCards = useCallback(({item}) => {
+    return (
+      <CardsWrapper>
+        <CardResume item={item} />
+      </CardsWrapper>
+    )
+  }, [])
   return (
-    <SafeAreaView>
-      <Text>Dash</Text>
-    </SafeAreaView>
+    <Container>
+      <StatusBar barStyle="dark-content" backgroundColor="#FFF" />
+      <Header />
+      <FlatList
+        data={dataCardsResume}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={handleRenderCards}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+      />
+    </Container>
   )
 }
 
