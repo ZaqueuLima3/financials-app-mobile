@@ -11,7 +11,7 @@ declare const global: {HermesInternal: null | {}}
 
 const App: React.FC = () => (
   <>
-    <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
+    <StatusBar barStyle="dark-content" backgroundColor="#ECECEC" />
 
     <AppProvider>
       <NavigationContainer>

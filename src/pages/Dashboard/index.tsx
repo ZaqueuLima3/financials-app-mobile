@@ -17,7 +17,7 @@ const Dashboard: React.FC = () => {
   }, [])
   return (
     <Container>
-      <StatusBar barStyle="dark-content" backgroundColor="#FFF" />
+      <StatusBar barStyle="dark-content" backgroundColor="#ECECEC" />
       <Header />
       <FlatList
         data={dataCardsResume}
@@ -25,6 +25,7 @@ const Dashboard: React.FC = () => {
         renderItem={handleRenderCards}
         horizontal
         showsHorizontalScrollIndicator={false}
+        contentContainerStyle={{paddingRight: 20}}
       />
     </Container>
   )
