@@ -9,6 +9,7 @@ export const Container = styled.View`
   background-color: #fff;
   padding: 14px 25px;
   margin-bottom: 30px;
+  box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.14);
 `
 
 export const ProgressInt = styled.View`

@@ -6,4 +6,6 @@ export const Container = styled.ScrollView.attrs({
   },
 })`
   padding: 30px 22px;
+  flex: 1;
+  background-color: #f0f2f5;
 `

@@ -2,6 +2,8 @@ import styled from 'styled-components/native'
 
 export const Container = styled.View`
   padding: 30px;
+  flex: 1;
+  background-color: #f0f2f5;
 `
 
 export const Body = styled.View``

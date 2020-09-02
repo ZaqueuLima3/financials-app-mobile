@@ -52,7 +52,7 @@ const Resume: React.FC = () => {
         </CurrentResume>
 
         <HowMyGoals>
-          Voce tem R$ <Spotlight>R$ 9800,00</Spotlight> de saldo para se manter
+          Voce tem R$ <Spotlight>R$ 980,00</Spotlight> de saldo para se manter
           no seu objetivo!
         </HowMyGoals>
 
