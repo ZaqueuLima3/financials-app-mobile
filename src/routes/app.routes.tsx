@@ -38,7 +38,7 @@ const DashboardStackScreen: React.FC = () => {
         options={{
           headerTitle: () => <Header />,
           safeAreaInsets: {
-            top: 35,
+            top: 20,
           },
         }}
       />

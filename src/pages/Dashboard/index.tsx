@@ -18,7 +18,6 @@ const Dashboard: React.FC = () => {
   }, [])
   return (
     <Container>
-      <StatusBar barStyle="dark-content" backgroundColor="#ECECEC" />
       <FlatList
         data={dataCardsResume}
         keyExtractor={(item) => item.id.toString()}
