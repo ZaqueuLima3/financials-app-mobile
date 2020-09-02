@@ -2,8 +2,9 @@ import React, {useCallback} from 'react'
 import {FlatList, StatusBar} from 'react-native'
 
 import CardResume from '../../components/CardResume'
+import CardCollapse from '../../components/CardCollapse'
 
-import {Container, Header, CardsWrapper} from './styles'
+import {Container, Header, Title, TextName, CardsWrapper, Body} from './styles'
 
 import {dataCardsResume} from './mockData'
 
@@ -18,7 +19,6 @@ const Dashboard: React.FC = () => {
   return (
     <Container>
       <StatusBar barStyle="dark-content" backgroundColor="#ECECEC" />
-      <Header />
       <FlatList
         data={dataCardsResume}
         keyExtractor={(item) => item.id.toString()}
@@ -27,6 +27,14 @@ const Dashboard: React.FC = () => {
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={{paddingRight: 20}}
       />
+
+      <Body>
+        <CardCollapse />
+
+        <CardCollapse />
+
+        <CardCollapse />
+      </Body>
     </Container>
   )
 }

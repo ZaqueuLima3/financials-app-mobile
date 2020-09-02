@@ -18,7 +18,7 @@ export const Header = styled.View`
 export const Title = styled.Text`
   color: #48576b;
   font-family: 'Montserrat-Bold';
-  font-size: 11px;
+  font-size: 16px;
 `
 
 export const Body = styled.View`

@@ -13,7 +13,7 @@ export interface AuthContextData {
 export const AuthContext = createContext<AuthContextData>({} as AuthContextData)
 
 export const AuthProvider: React.FC = ({children}) => {
-  const [logged, setLogged] = useState(false)
+  const [logged, setLogged] = useState(true)
 
   function signIn(credentials: SignInCredentials): void {
     if (credentials.email && credentials.password) {
