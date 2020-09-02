@@ -1,10 +1,10 @@
 import React, {useCallback} from 'react'
-import {FlatList, StatusBar} from 'react-native'
+import {FlatList} from 'react-native'
 
 import CardResume from '../../components/CardResume'
 import CardCollapse from '../../components/CardCollapse'
 
-import {Container, Header, Title, TextName, CardsWrapper, Body} from './styles'
+import {Container, CardsWrapper, Body} from './styles'
 
 import {dataCardsResume} from './mockData'
 
