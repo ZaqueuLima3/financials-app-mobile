@@ -35,5 +35,7 @@ export const CardsWrapper = styled.View`
   margin-left: 20px;
 `
 export const Body = styled.View`
-  padding: 21px;
+  padding-left: 21px;
+  padding-right: 21px;
+  padding-bottom: 21px;
 `
