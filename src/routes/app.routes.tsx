@@ -5,6 +5,7 @@ import FeatherIcon from 'react-native-vector-icons/Feather'
 
 import DashboardStackScreen from './stacks/dash.routes'
 import GoalsStackScreen from './stacks/goals.routes'
+import SettingsStackScreen from './stacks/settings.routes'
 import Resume from '../pages/Resume'
 
 const App = createBottomTabNavigator()
@@ -17,7 +18,7 @@ const AppRoutes: React.FC = () => {
           let iconName = ''
 
           if (route.name === 'Dashboard') {
-            iconName = 'grid'
+            iconName = 'home'
           } else if (route.name === 'Goals') {
             iconName = 'bar-chart-2'
           } else if (route.name === 'Resume') {
@@ -52,7 +53,7 @@ const AppRoutes: React.FC = () => {
 
       <App.Screen
         name="Settings"
-        component={GoalsStackScreen}
+        component={SettingsStackScreen}
         options={{tabBarLabel: 'Ajustes'}}
       />
     </App.Navigator>

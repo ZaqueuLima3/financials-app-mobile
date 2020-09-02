@@ -8,6 +8,7 @@ interface SignInCredentials {
 export interface AuthContextData {
   logged: boolean
   signIn(credentials: SignInCredentials): void
+  signOut(): void
 }
 
 export const AuthContext = createContext<AuthContextData>({} as AuthContextData)
@@ -21,8 +22,12 @@ export const AuthProvider: React.FC = ({children}) => {
     }
   }
 
+  function signOut(): void {
+    setLogged(false)
+  }
+
   return (
-    <AuthContext.Provider value={{logged, signIn}}>
+    <AuthContext.Provider value={{logged, signIn, signOut}}>
       {children}
     </AuthContext.Provider>
   )
