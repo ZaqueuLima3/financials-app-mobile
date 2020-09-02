@@ -1,4 +1,5 @@
 import styled from 'styled-components/native'
+import {Platform} from 'react-native'
 
 export const Container = styled.ScrollView`
   flex: 1;
@@ -7,7 +8,7 @@ export const Container = styled.ScrollView`
   padding-right: 46px;
 `
 export const Header = styled.View`
-  padding-top: 51px;
+  padding-top: ${Platform.OS === 'ios' ? '100px' : '51px'};
   align-items: center;
 `
 

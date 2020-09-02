@@ -1,5 +1,6 @@
 import React from 'react'
 import {createStackNavigator} from '@react-navigation/stack'
+import {Platform} from 'react-native'
 
 import Header from '../../components/Header'
 import Settings from '../../pages/Settings'
@@ -15,7 +16,7 @@ const SettingsStackScreen: React.FC = () => {
         options={{
           headerTitle: () => <Header />,
           safeAreaInsets: {
-            top: 20,
+            top: Platform.OS === 'ios' ? 60 : 20,
           },
         }}
       />

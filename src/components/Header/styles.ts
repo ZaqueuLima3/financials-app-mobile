@@ -1,4 +1,5 @@
 import styled from 'styled-components/native'
+import {Platform} from 'react-native'
 
 export const Container = styled.View`
   width: 100%;
@@ -9,8 +10,8 @@ export const Container = styled.View`
   margin-bottom: 44px;
   background-color: #fff;
   padding-top: 19px;
-  padding-left: 24px;
-  padding-right: 24px;
+  padding-left: ${Platform.OS === 'ios' ? '54px' : '24px'};
+  padding-right: ${Platform.OS === 'ios' ? '54px' : '24px'};
 `
 
 export const ProfileWrapper = styled.View`

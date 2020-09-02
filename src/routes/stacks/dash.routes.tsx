@@ -1,5 +1,6 @@
 import React from 'react'
 import {createStackNavigator} from '@react-navigation/stack'
+import {Platform} from 'react-native'
 
 import Header from '../../components/Header'
 import Dashboard from '../../pages/Dashboard'
@@ -15,7 +16,10 @@ const DashboardStackScreen: React.FC = () => {
         options={{
           headerTitle: () => <Header />,
           safeAreaInsets: {
-            top: 20,
+            top: Platform.OS === 'ios' ? 60 : 20,
+          },
+          headerStyle: {
+            paddingStart: 40,
           },
         }}
       />
