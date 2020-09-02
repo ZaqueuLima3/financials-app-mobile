@@ -1,11 +1,18 @@
 import React from 'react'
-import {Text, SafeAreaView} from 'react-native'
+
+import CardGoals from '../../components/CardGoals'
+
+import {Container} from './styles'
 
 const Goals: React.FC = () => {
   return (
-    <SafeAreaView>
-      <Text>Goals</Text>
-    </SafeAreaView>
+    <Container>
+      <CardGoals />
+
+      <CardGoals />
+
+      <CardGoals />
+    </Container>
   )
 }
 

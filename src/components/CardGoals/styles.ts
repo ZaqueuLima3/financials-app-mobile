@@ -1,0 +1,63 @@
+import styled from 'styled-components/native'
+
+import Icon from 'react-native-vector-icons/Feather'
+
+export const Container = styled.View`
+  width: 100%;
+  height: 126px;
+  border-radius: 8px;
+  background-color: #fff;
+  padding: 14px 25px;
+  margin-bottom: 30px;
+`
+
+export const ProgressInt = styled.View`
+  width: 35%;
+  height: 100%;
+  background-color: #3a2875;
+  margin-bottom: 12px;
+`
+export const Progress = styled.View`
+  width: 100%;
+  height: 5px;
+  background-color: #3a287550;
+  margin-bottom: 12px;
+`
+
+export const Content = styled.View`
+  flex-direction: row;
+`
+
+export const GoalImage = styled.Image`
+  width: 68px;
+  height: 68px;
+  border-radius: 34px;
+`
+
+export const GoalsInfo = styled.View`
+  margin-left: 15px;
+`
+
+export const Title = styled.Text`
+  color: #48576b;
+  font-family: 'Montserrat-Bold';
+  font-size: 16px;
+  margin-bottom: 4px;
+`
+
+export const Wrapper = styled.View`
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 4px;
+`
+
+export const IconFeather = styled(Icon)`
+  color: #f4a63d;
+  margin-right: 5px;
+`
+
+export const SmallText = styled.Text`
+  color: #48576b;
+  font-family: 'Montserrat-Regular';
+  font-size: 12px;
+`
