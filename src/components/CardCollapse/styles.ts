@@ -57,7 +57,8 @@ export const RegularText = styled.Text`
 export const Separator = styled.View`
   width: 100%;
   height: 0px;
-  border: 0.5px solid rgba(72, 87, 107, 0.3);
+  border-color: rgba(72, 87, 107, 0.3);
+  border-top-width: 0.5px;
   margin-top: 30px;
 `
 
@@ -66,7 +67,9 @@ export const More = styled.View`
 `
 
 export const Footer = styled.View`
-  padding-bottom: 16px;
+  padding: 16px 0;
+  border-color: rgba(72, 87, 107, 0.3);
+  border-top-width: 0.5px;
 `
 
 export const SmallLinkButton = styled.TouchableOpacity``
