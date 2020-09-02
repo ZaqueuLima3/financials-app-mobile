@@ -5,6 +5,7 @@ import FeatherIcon from 'react-native-vector-icons/Feather'
 
 import DashboardStackScreen from './stacks/dash.routes'
 import GoalsStackScreen from './stacks/goals.routes'
+import Resume from '../pages/Resume'
 
 const App = createBottomTabNavigator()
 
@@ -45,7 +46,7 @@ const AppRoutes: React.FC = () => {
 
       <App.Screen
         name="Resume"
-        component={GoalsStackScreen}
+        component={Resume}
         options={{tabBarLabel: 'Resumo'}}
       />
 
