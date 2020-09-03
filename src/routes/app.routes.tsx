@@ -8,6 +8,8 @@ import GoalsStackScreen from './stacks/goals.routes'
 import SettingsStackScreen from './stacks/settings.routes'
 import Resume from '../pages/Resume'
 
+import AddButton from '../components/AddButton'
+
 const App = createBottomTabNavigator()
 
 const AppRoutes: React.FC = () => {
@@ -16,6 +18,10 @@ const AppRoutes: React.FC = () => {
       screenOptions={({route}) => ({
         tabBarIcon: ({color, size}) => {
           let iconName = ''
+
+          if (route.name === 'Add') {
+            return <AddButton />
+          }
 
           if (route.name === 'Dashboard') {
             iconName = 'home'
@@ -55,6 +61,12 @@ const AppRoutes: React.FC = () => {
         name="Settings"
         component={SettingsStackScreen}
         options={{tabBarLabel: 'Ajustes'}}
+      />
+
+      <App.Screen
+        name="Add"
+        component={GoalsStackScreen}
+        options={{tabBarLabel: ''}}
       />
     </App.Navigator>
   )
