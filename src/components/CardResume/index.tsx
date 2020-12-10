@@ -10,15 +10,17 @@ import {
   Footer,
 } from './styles'
 
-interface MockDataCard {
+interface ResumeCard {
+  id: number
   title: string
   description: string
-  value: string
+  value: number
+  formattedValue: string
   motivationPhrase: string
 }
 
 interface CardResumeData {
-  item: MockDataCard
+  item: ResumeCard
 }
 
 const CardResume: React.FC<CardResumeData> = ({item}) => {
@@ -30,7 +32,7 @@ const CardResume: React.FC<CardResumeData> = ({item}) => {
       </Header>
 
       <Body>
-        <Total>{item.value}</Total>
+        <Total value={item.value}>{item.formattedValue}</Total>
         <TextSmall>{item.motivationPhrase}</TextSmall>
       </Body>
 

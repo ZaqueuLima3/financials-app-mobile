@@ -1,6 +1,7 @@
 import React from 'react'
 
 import IconFeather from 'react-native-vector-icons/Feather'
+import {useAuth} from '../../hooks/auth'
 
 import profileImage from '../../assets/profile.png'
 
@@ -14,14 +15,16 @@ import {
 } from './styles'
 
 const Header: React.FC = () => {
+  const {user} = useAuth()
+
   return (
     <Container>
       <ProfileWrapper>
         <ImageProfile source={profileImage} />
 
         <WelcomeWrapper>
-          <Title>Bem Vindo</Title>
-          <TextName>Zaqueu Santos</TextName>
+          <Title>Bem Vindo (a)</Title>
+          <TextName>{user.name}</TextName>
         </WelcomeWrapper>
       </ProfileWrapper>
 

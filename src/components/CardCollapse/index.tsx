@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useCallback, useState} from 'react'
 
 import IconFeather from 'react-native-vector-icons/Feather'
 
@@ -19,37 +19,54 @@ import {
 } from './styles'
 
 const CardCollapse: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const handleOpenCard = useCallback(() => {
+    setIsOpen((isOpenState) => !isOpenState)
+  }, [])
+
   return (
     <Container>
       <Header>
-        <Title>Receitas</Title>
+        <Title>Carteira</Title>
 
-        <ButtonExpand onPress={() => {}}>
-          <Small>ocultar</Small>
-          <IconFeather name="chevron-up" size={11} />
+        <ButtonExpand onPress={handleOpenCard}>
+          {isOpen ? (
+            <>
+              <Small>ocultar</Small>
+              <IconFeather name="chevron-up" size={11} />
+            </>
+          ) : (
+            <>
+              <Small>exibir</Small>
+              <IconFeather name="chevron-down" size={11} />
+            </>
+          )}
         </ButtonExpand>
       </Header>
 
-      <Body>
-        <TotalWrapper>
-          <RegularText>Saldo total mensal</RegularText>
-          <Title>R$ 2.200,00</Title>
-        </TotalWrapper>
-
-        <Separator />
-
-        <More>
+      {isOpen && (
+        <Body>
           <TotalWrapper>
-            <RegularText>Pagamento</RegularText>
+            <RegularText>Saldo total mensal</RegularText>
             <Title>R$ 2.200,00</Title>
           </TotalWrapper>
 
-          <TotalWrapper>
-            <RegularText>Vale refeição</RegularText>
-            <Title>R$ 2.200,00</Title>
-          </TotalWrapper>
-        </More>
-      </Body>
+          <Separator />
+
+          <More>
+            <TotalWrapper>
+              <RegularText>Pagamento</RegularText>
+              <Title>R$ 2.200,00</Title>
+            </TotalWrapper>
+
+            <TotalWrapper>
+              <RegularText>Vale refeição</RegularText>
+              <Title>R$ 2.200,00</Title>
+            </TotalWrapper>
+          </More>
+        </Body>
+      )}
 
       <Footer>
         <SmallLinkButton onPress={() => {}}>
