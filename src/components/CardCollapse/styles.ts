@@ -29,7 +29,6 @@ export const ButtonExpand = styled.TouchableOpacity`
 `
 
 export const Body = styled.View`
-  flex: 1;
   padding-bottom: 30px;
 `
 

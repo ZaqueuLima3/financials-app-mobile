@@ -12,7 +12,7 @@ export const commonColors = {
 
   primary: '#3a2875',
   secondary: '#f4a63d',
-  tertiary: '#5A40AF',
+  tertiary: '#65c7af',
   copper: '#b57c00',
 
   danger: '#FF0000',

@@ -28,7 +28,6 @@ const App: React.FC = () => {
   const themeDark = useCallback(async () => {
     const value = await AsyncStorage.getItem(STORAGE.THEME)
 
-    console.log(value)
     if (value) {
       if (value === 'dark') {
         setBarStyle('light-content')
@@ -44,7 +43,6 @@ const App: React.FC = () => {
 
   return (
     <>
-      {console.log(barStyle)}
       <StatusBar barStyle={barStyle} backgroundColor={colors.container} />
 
       <NavigationContainer>

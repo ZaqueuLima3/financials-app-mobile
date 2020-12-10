@@ -12,7 +12,6 @@ import {
   GoalsInfo,
   Wrapper,
   IconFeather,
-  SmallText,
 } from './styles'
 import {Small, Title} from '../Text'
 

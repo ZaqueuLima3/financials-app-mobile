@@ -143,20 +143,16 @@ const Dashboard: React.FC = () => {
 
   return (
     <Container bg={colors.background}>
-      <View>
-        <SelectMonth onPress={handleMonthChange} />
-      </View>
+      <SelectMonth onPress={handleMonthChange} />
 
-      <View>
-        <FlatList
-          data={[account, balance, outcome]}
-          keyExtractor={(item) => item.id.toString()}
-          renderItem={handleRenderCards}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={{paddingRight: 20}}
-        />
-      </View>
+      <FlatList
+        data={[account, balance, outcome]}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={handleRenderCards}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={{paddingRight: 20}}
+      />
 
       <Body>
         <CardCollapse
@@ -167,13 +163,6 @@ const Dashboard: React.FC = () => {
           )}
         />
 
-        <CardCollapse
-          title="Receitas"
-          value={income.formattedValue}
-          transactions={transactions.filter(
-            (transaction) => transaction.type === 'income',
-          )}
-        />
         <CardCollapse
           title="Receitas"
           value={income.formattedValue}

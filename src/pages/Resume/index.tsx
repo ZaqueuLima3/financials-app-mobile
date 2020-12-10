@@ -12,13 +12,10 @@ import {
   Separator,
   Body,
   Goals,
-  Spotlight,
   CurrentResume,
   ResumeWrapper,
-  HowMyGoals,
   Footer,
   OkButton,
-  OkButtonText,
 } from './styles'
 
 const Resume: React.FC = () => {
@@ -68,7 +65,9 @@ const Resume: React.FC = () => {
 
       <Footer>
         <OkButton onPress={() => {}}>
-          <OkButtonText>Ok, vou poupar</OkButtonText>
+          <Regular color="white" weight="semibold" capitalize>
+            Ok, vou poupar
+          </Regular>
         </OkButton>
       </Footer>
     </Container>

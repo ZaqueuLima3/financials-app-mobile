@@ -27,11 +27,11 @@ const CardResume: React.FC<CardResumeData> = ({item}) => {
 
       <Body>
         <BigTitle>{item.formattedValue}</BigTitle>
-        <Small>{item.motivationPhrase}</Small>
+        <Small align="center">{item.motivationPhrase}</Small>
       </Body>
 
       <Footer bg={colors.contrastDark}>
-        <Small>Dicas para conseguir Guardar mais dinheiro</Small>
+        <Small align="center">Dicas para conseguir Guardar mais dinheiro</Small>
       </Footer>
     </Container>
   )

@@ -39,9 +39,3 @@ export const Footer = styled.View<FooterTye>`
   justify-content: center;
   align-items: center;
 `
-
-export const TextSmall = styled.Text`
-  color: #48576b;
-  font-family: 'Montserrat-Regular';
-  font-size: 10px;
-`

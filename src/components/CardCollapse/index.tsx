@@ -37,10 +37,10 @@ const CardCollapse: React.FC<CardCollapseProps> = ({
 }) => {
   const {colors} = useColors()
 
-  const [isVisible, setIsVisible] = useState(false)
+  const [isVisible, setIsVisible] = useState(true)
 
   const handleOpenCard = useCallback(() => {
-    setIsVisible((isVisibleState) => !isVisibleState)
+    setIsVisible((prev) => !prev)
   }, [])
 
   return (
@@ -71,18 +71,16 @@ const CardCollapse: React.FC<CardCollapseProps> = ({
           </TotalWrapper>
 
           <Separator />
-
-          <More>
-            <TotalWrapper>
-              <Regular>dhjska</Regular>
-              <Title>dsajkhd</Title>
-            </TotalWrapper>
-
-            <TotalWrapper>
-              <Regular>dhjska</Regular>
-              <Title>dsajkhd</Title>
-            </TotalWrapper>
-          </More>
+          {transactions.length > 0 && (
+            <More>
+              {transactions.slice(0, 2).map((transaction) => (
+                <TotalWrapper>
+                  <Regular>{transaction.title}</Regular>
+                  <Title>{formatValue(transaction.value)}</Title>
+                </TotalWrapper>
+              ))}
+            </More>
+          )}
         </Body>
       )}
 
