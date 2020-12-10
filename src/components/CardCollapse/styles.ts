@@ -1,5 +1,9 @@
 import styled from 'styled-components/native'
 
+interface TitleType {
+  visible: boolean
+}
+
 export const Container = styled.View`
   width: 100%;
   height: auto;
@@ -23,6 +27,11 @@ export const Title = styled.Text`
   color: #48576b;
   font-family: 'Montserrat-Bold';
   font-size: 16px;
+`
+
+export const Saldo = styled(Title)<TitleType>`
+  background-color: ${(p) => (p.visible ? 'transparent' : '#48576b')};
+  border-radius: 10px;
 `
 
 export const ButtonExpand = styled.TouchableOpacity`

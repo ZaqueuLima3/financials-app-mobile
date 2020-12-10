@@ -1,11 +1,13 @@
 import React, {useCallback, useState} from 'react'
 
 import IconFeather from 'react-native-vector-icons/Feather'
+import formatValue from '../../utils/formatValue'
 
 import {
   Container,
   Header,
   Title,
+  Saldo,
   ButtonExpand,
   Small,
   Body,
@@ -18,55 +20,78 @@ import {
   SmallLinkText,
 } from './styles'
 
-const CardCollapse: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false)
+interface Transaction {
+  title: string
+  paid: boolean
+  type: 'income' | 'outcome'
+  value: number
+}
+
+interface CardCollapseProps {
+  title: string
+  value: string
+  transactions: Transaction[]
+}
+
+const CardCollapse: React.FC<CardCollapseProps> = ({
+  title,
+  transactions,
+  value,
+}) => {
+  const [isVisible, setIsVisible] = useState(false)
 
   const handleOpenCard = useCallback(() => {
-    setIsOpen((isOpenState) => !isOpenState)
+    setIsVisible((isVisibleState) => !isVisibleState)
   }, [])
 
   return (
     <Container>
       <Header>
-        <Title>Carteira</Title>
+        <Title>{title}</Title>
 
         <ButtonExpand onPress={handleOpenCard}>
-          {isOpen ? (
+          {isVisible ? (
             <>
-              <Small>ocultar</Small>
-              <IconFeather name="chevron-up" size={11} />
+              <Small>esconder</Small>
+              <IconFeather name="eye-off" size={11} />
             </>
           ) : (
             <>
               <Small>exibir</Small>
-              <IconFeather name="chevron-down" size={11} />
+              <IconFeather name="eye" size={11} />
             </>
           )}
         </ButtonExpand>
       </Header>
 
-      {isOpen && (
-        <Body>
-          <TotalWrapper>
-            <RegularText>Saldo total mensal</RegularText>
-            <Title>R$ 2.200,00</Title>
-          </TotalWrapper>
+      <Body>
+        <TotalWrapper>
+          <RegularText>Saldo total mensal</RegularText>
+          <Saldo visible={isVisible}>{value}</Saldo>
+        </TotalWrapper>
 
-          <Separator />
+        <Separator />
 
-          <More>
+        <More>
+          {transactions[0] && (
             <TotalWrapper>
-              <RegularText>Pagamento</RegularText>
-              <Title>R$ 2.200,00</Title>
+              <RegularText>{transactions[0].title}</RegularText>
+              <Saldo visible={isVisible}>
+                {formatValue(transactions[0].value)}
+              </Saldo>
             </TotalWrapper>
+          )}
 
+          {transactions[1] && (
             <TotalWrapper>
-              <RegularText>Vale refeição</RegularText>
-              <Title>R$ 2.200,00</Title>
+              <RegularText>{transactions[1].title}</RegularText>
+              <Saldo visible={isVisible}>
+                {formatValue(transactions[1].value)}
+              </Saldo>
             </TotalWrapper>
-          </More>
-        </Body>
-      )}
+          )}
+        </More>
+      </Body>
 
       <Footer>
         <SmallLinkButton onPress={() => {}}>

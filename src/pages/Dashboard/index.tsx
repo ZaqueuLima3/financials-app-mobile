@@ -3,6 +3,7 @@ import {FlatList} from 'react-native'
 
 import formatValue from '../../utils/formatValue'
 import api from '../../service/api'
+import SelectMonth from '../../components/SelectMonth'
 import CardResume from '../../components/CardResume'
 import CardCollapse from '../../components/CardCollapse'
 
@@ -17,7 +18,17 @@ interface ResumeCard {
   motivationPhrase: string
 }
 
+interface Transaction {
+  title: string
+  paid: boolean
+  type: 'income' | 'outcome'
+  value: number
+}
+
 const Dashboard: React.FC = () => {
+  const [currentMonth, setCurrentMonth] = useState(new Date())
+  const [transactions, setTransactions] = useState([] as Transaction[])
+
   const [account, setAccount] = useState({
     id: 1,
     title: 'Meu Saldo',
@@ -40,6 +51,15 @@ const Dashboard: React.FC = () => {
     id: 3,
     title: 'Meus gastos mensal',
     description: '(despesas)',
+    value: 0,
+    formattedValue: formatValue(0),
+    motivationPhrase: 'Lembre-se sempre dos seus objetivos',
+  } as ResumeCard)
+
+  const [income, setIncome] = useState({
+    id: 3,
+    title: 'Minhas receitas mensal',
+    description: '(receitas)',
     value: 0,
     formattedValue: formatValue(0),
     motivationPhrase: 'Lembre-se sempre dos seus objetivos',
@@ -73,6 +93,12 @@ const Dashboard: React.FC = () => {
         formattedValue: formatValue(responseBalance.outcome),
       }))
 
+      setIncome((prev) => ({
+        ...prev,
+        value: responseBalance.income,
+        formattedValue: formatValue(responseBalance.income),
+      }))
+
       setBalance((prev) => ({
         ...prev,
         value: responseBalance.total,
@@ -81,6 +107,27 @@ const Dashboard: React.FC = () => {
     }
 
     recoverTransactionsResume()
+  }, [])
+
+  useEffect(() => {
+    async function getTransactions(): Promise<void> {
+      const response = await api.get('transactions/month', {
+        params: {
+          year: currentMonth.getFullYear(),
+          month: currentMonth.getMonth() + 1,
+        },
+      })
+
+      setTransactions(response.data)
+    }
+
+    getTransactions()
+  }, [currentMonth])
+
+  const handleMonthChange = useCallback((month: number) => {
+    const date = new Date()
+    date.setMonth(month)
+    setCurrentMonth(date)
   }, [])
 
   const handleRenderCards = useCallback(({item}) => {
@@ -93,6 +140,8 @@ const Dashboard: React.FC = () => {
 
   return (
     <Container>
+      <SelectMonth onPress={handleMonthChange} />
+
       <FlatList
         data={[account, balance, outcome]}
         keyExtractor={(item) => item.id.toString()}
@@ -103,11 +152,21 @@ const Dashboard: React.FC = () => {
       />
 
       <Body>
-        <CardCollapse />
+        <CardCollapse
+          title="Gastos"
+          value={outcome.formattedValue}
+          transactions={transactions.filter(
+            (transaction) => transaction.type === 'outcome',
+          )}
+        />
 
-        <CardCollapse />
-
-        <CardCollapse />
+        <CardCollapse
+          title="Receitas"
+          value={income.formattedValue}
+          transactions={transactions.filter(
+            (transaction) => transaction.type === 'income',
+          )}
+        />
       </Body>
     </Container>
   )
