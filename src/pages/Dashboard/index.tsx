@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react'
-import {FlatList} from 'react-native'
+import {FlatList, View} from 'react-native'
 
 import formatValue from '../../utils/formatValue'
 import api from '../../service/api'
@@ -140,16 +140,20 @@ const Dashboard: React.FC = () => {
 
   return (
     <Container>
-      <SelectMonth onPress={handleMonthChange} />
+      <View>
+        <SelectMonth onPress={handleMonthChange} />
+      </View>
 
-      <FlatList
-        data={[account, balance, outcome]}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={handleRenderCards}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{paddingRight: 20}}
-      />
+      <View>
+        <FlatList
+          data={[account, balance, outcome]}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={handleRenderCards}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={{paddingRight: 20}}
+        />
+      </View>
 
       <Body>
         <CardCollapse

@@ -1,6 +1,7 @@
 import React, {createContext, useState, useCallback, useEffect} from 'react'
 import AsyncStorage from '@react-native-community/async-storage'
 import api from '../service/api'
+import {STORAGE} from '../config/constants'
 
 interface User {
   id: string
@@ -35,8 +36,8 @@ export const AuthProvider: React.FC = ({children}) => {
   useEffect(() => {
     async function loadData(): Promise<void> {
       const [token, user] = await AsyncStorage.multiGet([
-        '@youplan:token',
-        '@youplan:user',
+        STORAGE.TOKEN,
+        STORAGE.USER,
       ])
 
       if (token[1] && user[1]) {
@@ -57,15 +58,15 @@ export const AuthProvider: React.FC = ({children}) => {
     api.defaults.headers.authorization = `Bearer ${token}`
 
     await AsyncStorage.multiSet([
-      ['@youplan:token', token],
-      ['@youplan:user', JSON.stringify(user)],
+      [STORAGE.TOKEN, token],
+      [STORAGE.USER, JSON.stringify(user)],
     ])
 
     setData({token, user})
   }, [])
 
   const signOut = useCallback(async () => {
-    await AsyncStorage.multiRemove(['@youplan:token', '@youplan:user'])
+    await AsyncStorage.multiRemove([STORAGE.TOKEN, STORAGE.USER])
 
     setData({} as AuthState)
   }, [])
