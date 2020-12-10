@@ -2,6 +2,7 @@ import styled from 'styled-components/native'
 
 export const Container = styled.View`
   width: 100%;
+  height: auto;
   background-color: #ffffff;
   box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.14);
   margin-top: 30px;
@@ -15,6 +16,7 @@ export const Header = styled.View`
   flex-direction: row;
   text-align: center;
   justify-content: space-between;
+  margin-bottom: 10px;
 `
 
 export const Title = styled.Text`
@@ -37,7 +39,6 @@ export const Small = styled.Text`
 
 export const Body = styled.View`
   flex: 1;
-  padding-top: 10px;
   padding-bottom: 30px;
 `
 

@@ -1,5 +1,9 @@
 import styled from 'styled-components/native'
 
+interface TotalType {
+  value: number
+}
+
 export const Container = styled.View`
   width: 244px;
   height: 230px;
@@ -27,8 +31,8 @@ export const Body = styled.View`
   align-items: center;
 `
 
-export const Total = styled.Text`
-  color: #48576b;
+export const Total = styled.Text<TotalType>`
+  color: ${(p) => (p.value < 0 ? '#aa576b' : '#48576b')};
   font-family: 'Montserrat-Bold';
   font-size: 20px;
 `
