@@ -1,13 +1,13 @@
 import styled from 'styled-components/native'
 
-interface TitleType {
-  visible: boolean
+interface ContainerType {
+  bg: string
 }
 
-export const Container = styled.View`
+export const Container = styled.View<ContainerType>`
   width: 100%;
   height: auto;
-  background-color: #ffffff;
+  background-color: ${(p) => p.bg};
   box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.14);
   margin-top: 30px;
   padding-top: 22px;
@@ -23,27 +23,9 @@ export const Header = styled.View`
   margin-bottom: 10px;
 `
 
-export const Title = styled.Text`
-  color: #48576b;
-  font-family: 'Montserrat-Bold';
-  font-size: 16px;
-`
-
-export const Saldo = styled(Title)<TitleType>`
-  background-color: ${(p) => (p.visible ? 'transparent' : '#48576b')};
-  border-radius: 10px;
-`
-
 export const ButtonExpand = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
-`
-
-export const Small = styled.Text`
-  color: #48576b;
-  font-family: 'Montserrat-Regular';
-  font-size: 11px;
-  margin-right: 5px;
 `
 
 export const Body = styled.View`
@@ -56,12 +38,6 @@ export const TotalWrapper = styled.View`
   text-align: center;
   justify-content: space-between;
   padding-top: 10px;
-`
-
-export const RegularText = styled.Text`
-  color: #48576b;
-  font-family: 'Montserrat-Regular';
-  font-size: 16px;
 `
 
 export const Separator = styled.View`
@@ -83,10 +59,3 @@ export const Footer = styled.View`
 `
 
 export const SmallLinkButton = styled.TouchableOpacity``
-
-export const SmallLinkText = styled.Text`
-  font-family: 'Montserrat-Regular';
-  font-size: 11px;
-  line-height: 13px;
-  color: #0c5ac1;
-`

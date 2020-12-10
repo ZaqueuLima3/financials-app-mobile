@@ -4,10 +4,12 @@ import {Platform} from 'react-native'
 
 import Header from '../../components/Header'
 import Dashboard from '../../pages/Dashboard'
+import {useColors} from '../../hooks/theme'
 
 const DashboardStack = createStackNavigator()
 
 const DashboardStackScreen: React.FC = () => {
+  const {colors} = useColors()
   return (
     <DashboardStack.Navigator>
       <DashboardStack.Screen
@@ -19,7 +21,7 @@ const DashboardStackScreen: React.FC = () => {
             top: Platform.OS === 'ios' ? 60 : 20,
           },
           headerStyle: {
-            paddingStart: 40,
+            backgroundColor: colors.container,
           },
         }}
       />

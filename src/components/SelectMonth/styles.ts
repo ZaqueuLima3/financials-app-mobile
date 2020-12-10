@@ -1,7 +1,11 @@
 import styled from 'styled-components/native'
 
-export const Container = styled.TouchableOpacity`
-  background-color: #f0f2f5;
+interface ContainerType {
+  bg: string
+}
+
+export const Container = styled.TouchableOpacity<ContainerType>`
+  background-color: ${(p) => p.bg};
   height: 30px;
   box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.14);
   margin-bottom: 20px;

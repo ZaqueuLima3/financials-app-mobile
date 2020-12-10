@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react'
-import {FlatList, View} from 'react-native'
+import {FlatList, View, StatusBar} from 'react-native'
 
 import formatValue from '../../utils/formatValue'
 import api from '../../service/api'
@@ -8,6 +8,7 @@ import CardResume from '../../components/CardResume'
 import CardCollapse from '../../components/CardCollapse'
 
 import {Container, CardsWrapper, Body} from './styles'
+import {useColors} from '../../hooks/theme'
 
 interface ResumeCard {
   id: number
@@ -26,6 +27,8 @@ interface Transaction {
 }
 
 const Dashboard: React.FC = () => {
+  const {colors} = useColors()
+
   const [currentMonth, setCurrentMonth] = useState(new Date())
   const [transactions, setTransactions] = useState([] as Transaction[])
 
@@ -139,7 +142,7 @@ const Dashboard: React.FC = () => {
   }, [])
 
   return (
-    <Container>
+    <Container bg={colors.background}>
       <View>
         <SelectMonth onPress={handleMonthChange} />
       </View>

@@ -1,43 +1,57 @@
 import React from 'react'
+import AsyncStorage from '@react-native-community/async-storage'
 
 import Icon from 'react-native-vector-icons/Feather'
+import {STORAGE} from '../../config/constants'
+import {Regular} from '../../components/Text'
 import {useAuth} from '../../hooks/auth'
+import {useColors} from '../../hooks/theme'
 
-import {Container, Body, Item, Text} from './styles'
+import {Container, Body, Item} from './styles'
 
 const Settings: React.FC = () => {
   const {signOut} = useAuth()
+  const {colors, setTheme} = useColors()
+
+  const handleSetTheme = async (): Promise<void> => {
+    const theme = await AsyncStorage.getItem(STORAGE.THEME)
+    const value = theme === 'light' ? 'dark' : 'light'
+    setTheme(value)
+  }
 
   return (
-    <Container>
+    <Container bg={colors.container}>
       <Body>
         <Item onPress={() => {}}>
-          <Text>Meu perfil</Text>
-          <Icon name="chevron-right" size={16} color="#48576b" />
+          <Regular>Meu perfil</Regular>
+          <Icon name="chevron-right" size={16} color={colors.text} />
         </Item>
 
         <Item onPress={() => {}}>
-          <Text>Notificações</Text>
-          <Icon name="chevron-right" size={16} color="#48576b" />
+          <Regular>Notificações</Regular>
+          <Icon name="chevron-right" size={16} color={colors.text} />
         </Item>
 
         <Item onPress={() => {}}>
-          <Text>Meus cartões</Text>
-          <Icon name="chevron-right" size={16} color="#48576b" />
+          <Regular>Meus cartões</Regular>
+          <Icon name="chevron-right" size={16} color={colors.text} />
         </Item>
 
         <Item onPress={() => {}}>
-          <Text>Minhas contas</Text>
-          <Icon name="chevron-right" size={16} color="#48576b" />
+          <Regular>Minhas contas</Regular>
+          <Icon name="chevron-right" size={16} color={colors.text} />
         </Item>
 
         <Item onPress={() => {}}>
-          <Text>Avaliar o App</Text>
-          <Icon name="chevron-right" size={16} color="#48576b" />
+          <Regular>Avaliar o App</Regular>
+          <Icon name="chevron-right" size={16} color={colors.text} />
         </Item>
 
+        <Item onPress={handleSetTheme}>
+          <Regular>Mudar Tema</Regular>
+        </Item>
         <Item onPress={signOut}>
-          <Text>Sair do App</Text>
+          <Regular>Sair do App</Regular>
         </Item>
       </Body>
     </Container>

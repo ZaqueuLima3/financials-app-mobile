@@ -1,11 +1,11 @@
 export const fontSize = {
-  small: 12,
+  small: 11,
   caption: 14,
-  body: 16,
-  regular: 18,
-  subtitle: 22,
-  title: 24,
-  bigTitle: 28,
+  body: 14,
+  regular: 16,
+  subtitle: 14,
+  title: 16,
+  bigTitle: 20,
   headLine: 32,
 }
 

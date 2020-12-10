@@ -1,14 +1,7 @@
 import React from 'react'
-
-import {
-  Container,
-  Header,
-  Title,
-  TextSmall,
-  Body,
-  Total,
-  Footer,
-} from './styles'
+import {useColors} from '../../hooks/theme'
+import {Title, Small, BigTitle} from '../Text'
+import {Container, Header, Body, Footer} from './styles'
 
 interface ResumeCard {
   id: number
@@ -24,20 +17,21 @@ interface CardResumeData {
 }
 
 const CardResume: React.FC<CardResumeData> = ({item}) => {
+  const {colors} = useColors()
   return (
-    <Container>
+    <Container bg={colors.container}>
       <Header>
         <Title>{item.title}</Title>
-        <TextSmall>{item.description}</TextSmall>
+        <Small>{item.description}</Small>
       </Header>
 
       <Body>
-        <Total value={item.value}>{item.formattedValue}</Total>
-        <TextSmall>{item.motivationPhrase}</TextSmall>
+        <BigTitle>{item.formattedValue}</BigTitle>
+        <Small>{item.motivationPhrase}</Small>
       </Body>
 
-      <Footer>
-        <TextSmall>Dicas para conseguir Guardar mais dinheiro</TextSmall>
+      <Footer bg={colors.contrastDark}>
+        <Small>Dicas para conseguir Guardar mais dinheiro</Small>
       </Footer>
     </Container>
   )

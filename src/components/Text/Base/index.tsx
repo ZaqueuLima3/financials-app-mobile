@@ -31,7 +31,7 @@ type Props = {
 
 const Text: FC<Props> = ({
   children,
-  color = 'contrast',
+  color = 'text',
   size = 'regular',
   style,
   weight = 'normal',

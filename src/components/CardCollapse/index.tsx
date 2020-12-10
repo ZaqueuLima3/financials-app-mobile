@@ -1,23 +1,20 @@
 import React, {useCallback, useState} from 'react'
 
 import IconFeather from 'react-native-vector-icons/Feather'
+import {useColors} from '../../hooks/theme'
 import formatValue from '../../utils/formatValue'
-import {Title} from '../Text'
+import {Title, Small, Regular} from '../Text'
 
 import {
   Container,
   Header,
-  Saldo,
   ButtonExpand,
-  Small,
   Body,
   TotalWrapper,
-  RegularText,
   Separator,
   More,
   Footer,
   SmallLinkButton,
-  SmallLinkText,
 } from './styles'
 
 interface Transaction {
@@ -38,6 +35,8 @@ const CardCollapse: React.FC<CardCollapseProps> = ({
   transactions,
   value,
 }) => {
+  const {colors} = useColors()
+
   const [isVisible, setIsVisible] = useState(false)
 
   const handleOpenCard = useCallback(() => {
@@ -45,20 +44,20 @@ const CardCollapse: React.FC<CardCollapseProps> = ({
   }, [])
 
   return (
-    <Container>
+    <Container bg={colors.container}>
       <Header>
         <Title>{title}</Title>
 
         <ButtonExpand onPress={handleOpenCard}>
           {isVisible ? (
             <>
-              <Small>esconder</Small>
-              <IconFeather name="eye-off" size={11} />
+              <Small style={{marginRight: 5}}>ocultar</Small>
+              <IconFeather name="chevron-up" color={colors.text} size={12} />
             </>
           ) : (
             <>
-              <Small>exibir</Small>
-              <IconFeather name="eye" size={11} />
+              <Small style={{marginRight: 5}}>exibir</Small>
+              <IconFeather name="chevron-down" color={colors.text} size={12} />
             </>
           )}
         </ButtonExpand>
@@ -67,21 +66,21 @@ const CardCollapse: React.FC<CardCollapseProps> = ({
       {isVisible && (
         <Body>
           <TotalWrapper>
-            <RegularText>Saldo total mensal</RegularText>
-            <Saldo visible={isVisible}>{value}</Saldo>
+            <Regular>Saldo total mensal</Regular>
+            <Title>{value}</Title>
           </TotalWrapper>
 
           <Separator />
 
           <More>
             <TotalWrapper>
-              <RegularText>dhjska</RegularText>
-              <Saldo visible>dsajkhd</Saldo>
+              <Regular>dhjska</Regular>
+              <Title>dsajkhd</Title>
             </TotalWrapper>
 
             <TotalWrapper>
-              <RegularText>dhjska</RegularText>
-              <Saldo visible>dsajkhd</Saldo>
+              <Regular>dhjska</Regular>
+              <Title>dsajkhd</Title>
             </TotalWrapper>
           </More>
         </Body>
@@ -89,7 +88,7 @@ const CardCollapse: React.FC<CardCollapseProps> = ({
 
       <Footer>
         <SmallLinkButton onPress={() => {}}>
-          <SmallLinkText>ver detalhes</SmallLinkText>
+          <Small color="blue">ver detalhes</Small>
         </SmallLinkButton>
       </Footer>
     </Container>

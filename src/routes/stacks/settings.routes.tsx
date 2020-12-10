@@ -4,10 +4,12 @@ import {Platform} from 'react-native'
 
 import Header from '../../components/Header'
 import Settings from '../../pages/Settings'
+import {useColors} from '../../hooks/theme'
 
 const SettingsStack = createStackNavigator()
 
 const SettingsStackScreen: React.FC = () => {
+  const {colors} = useColors()
   return (
     <SettingsStack.Navigator>
       <SettingsStack.Screen
@@ -17,6 +19,9 @@ const SettingsStackScreen: React.FC = () => {
           headerTitle: () => <Header />,
           safeAreaInsets: {
             top: Platform.OS === 'ios' ? 60 : 20,
+          },
+          headerStyle: {
+            backgroundColor: colors.container,
           },
         }}
       />

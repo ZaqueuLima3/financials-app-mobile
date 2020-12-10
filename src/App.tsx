@@ -1,24 +1,57 @@
 import 'react-native-gesture-handler'
 
-import React from 'react'
+import React, {useCallback, useEffect, useState} from 'react'
 import {NavigationContainer} from '@react-navigation/native'
-import {KeyboardAvoidingView, SafeAreaView, StatusBar, View} from 'react-native'
+import {
+  Appearance,
+  KeyboardAvoidingView,
+  SafeAreaView,
+  StatusBar,
+  View,
+} from 'react-native'
 
+import AsyncStorage from '@react-native-community/async-storage'
 import Routes from './routes'
 import AppProvider from './context'
+import {STORAGE} from './config/constants'
+import {useColors} from './hooks/theme'
 
 declare const global: {HermesInternal: null | {}}
 
-const App: React.FC = () => (
-  <View style={{flex: 1}}>
-    <StatusBar barStyle="dark-content" backgroundColor="#FFF" />
+const App: React.FC = () => {
+  const [barStyle, setBarStyle] = useState<
+    'light-content' | 'dark-content' | 'default' | undefined
+  >(Appearance.getColorScheme() === 'dark' ? 'dark-content' : 'light-content')
 
-    <AppProvider>
+  const {colors} = useColors()
+
+  const themeDark = useCallback(async () => {
+    const value = await AsyncStorage.getItem(STORAGE.THEME)
+
+    console.log(value)
+    if (value) {
+      if (value === 'dark') {
+        setBarStyle('light-content')
+      } else {
+        setBarStyle('dark-content')
+      }
+    }
+  }, [])
+
+  useEffect(() => {
+    themeDark()
+  })
+
+  return (
+    <>
+      {console.log(barStyle)}
+      <StatusBar barStyle={barStyle} backgroundColor={colors.container} />
+
       <NavigationContainer>
         <Routes />
       </NavigationContainer>
-    </AppProvider>
-  </View>
-)
+    </>
+  )
+}
 
 export default App

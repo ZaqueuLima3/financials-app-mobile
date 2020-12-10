@@ -1,16 +1,17 @@
 import React from 'react'
+import {useColors} from '../../hooks/theme'
 
 import profileImage from '../../assets/profile.png'
+
+import {BigTitle, Regular, Title} from '../../components/Text'
 
 import {
   Container,
   Header,
   ImageProfile,
-  Title,
   Separator,
   Body,
   Goals,
-  RegularText,
   Spotlight,
   CurrentResume,
   ResumeWrapper,
@@ -21,45 +22,48 @@ import {
 } from './styles'
 
 const Resume: React.FC = () => {
+  const {colors} = useColors()
   return (
-    <Container>
+    <Container bg={colors.background}>
       <Header>
         <ImageProfile source={profileImage} />
 
         <Title>Ola Zaqueu Santos</Title>
 
-        <RegularText>Bem vindo ao seu resumo para novos gastos</RegularText>
+        <Regular align="center">
+          Bem vindo ao seu resumo para novos gastos
+        </Regular>
       </Header>
 
       <Separator />
 
       <Body>
         <Goals>
-          <RegularText>Objetivo do mes</RegularText>
-          <Spotlight>R$ 550,00</Spotlight>
+          <Regular>Objetivo do mes</Regular>
+          <BigTitle color="secondary">R$ 550,00</BigTitle>
         </Goals>
 
         <CurrentResume>
           <ResumeWrapper>
-            <RegularText>Gastos</RegularText>
+            <Regular>Gastos</Regular>
             <Title>R$ 670,00</Title>
           </ResumeWrapper>
 
           <ResumeWrapper>
-            <RegularText>Receita</RegularText>
+            <Regular>Receita</Regular>
             <Title>R$ 2.200,00</Title>
           </ResumeWrapper>
         </CurrentResume>
 
-        <HowMyGoals>
-          Voce tem R$ <Spotlight>R$ 980,00</Spotlight> de saldo para se manter
-          no seu objetivo!
-        </HowMyGoals>
+        <BigTitle align="center" style={{marginBottom: 15}}>
+          Voce tem R$ <BigTitle color="secondary">R$ 980,00</BigTitle> de saldo
+          para se manter no seu objetivo!
+        </BigTitle>
 
-        <RegularText>
+        <Regular align="center">
           Antes de gasta-lo lembre-se que o quanto mais poupar mais rápido
           alcançara suas metas
-        </RegularText>
+        </Regular>
       </Body>
 
       <Footer>

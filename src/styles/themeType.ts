@@ -1,6 +1,7 @@
 export type AvailableColors = {
-  mode: string
-  contrast: string
+  container: string
+  background: string
+  text: string
   contrastDark: string
   contrastMode: string
   greyTransparent: string
@@ -29,8 +30,9 @@ export type AvailableColors = {
 }
 
 export type ColorsPropType =
-  | 'mode'
-  | 'contrast'
+  | 'container'
+  | 'background'
+  | 'text'
   | 'contrastDark'
   | 'contrastMode'
   | 'greyTransparent'

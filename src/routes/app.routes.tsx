@@ -7,10 +7,13 @@ import DashboardStackScreen from './stacks/dash.routes'
 import GoalsStackScreen from './stacks/goals.routes'
 import SettingsStackScreen from './stacks/settings.routes'
 import Resume from '../pages/Resume'
+import {useColors} from '../hooks/theme'
 
 const App = createBottomTabNavigator()
 
 const AppRoutes: React.FC = () => {
+  const {colors} = useColors()
+
   return (
     <App.Navigator
       screenOptions={({route}) => ({
@@ -31,8 +34,11 @@ const AppRoutes: React.FC = () => {
         },
       })}
       tabBarOptions={{
-        activeTintColor: '#3a2875',
-        inactiveTintColor: 'gray',
+        activeTintColor: colors.tertiary,
+        inactiveTintColor: colors.text,
+        style: {
+          backgroundColor: colors.container,
+        },
       }}>
       <App.Screen
         name="Dashboard"

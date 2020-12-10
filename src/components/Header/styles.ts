@@ -1,14 +1,18 @@
 import styled from 'styled-components/native'
 import {Platform} from 'react-native'
 
-export const Container = styled.View`
+interface ContainerType {
+  bg: string
+}
+
+export const Container = styled.View<ContainerType>`
   width: 100%;
   height: 82px;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 44px;
-  background-color: #fff;
+  background-color: ${(p) => p.bg};
   padding-top: 19px;
   padding-left: ${Platform.OS === 'ios' ? '54px' : '24px'};
   padding-right: ${Platform.OS === 'ios' ? '54px' : '24px'};
@@ -27,15 +31,3 @@ export const ImageProfile = styled.Image`
 `
 
 export const WelcomeWrapper = styled.View``
-
-export const Title = styled.Text`
-  color: #48576b;
-  font-family: 'Montserrat-Regular';
-  font-size: 16px;
-`
-
-export const TextName = styled.Text`
-  color: #f4a63d;
-  font-family: 'Montserrat-Bold';
-  font-size: 16px;
-`

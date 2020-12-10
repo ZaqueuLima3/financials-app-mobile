@@ -1,9 +1,13 @@
 import styled from 'styled-components/native'
 import {Platform} from 'react-native'
 
-export const Container = styled.ScrollView`
+interface ContainerType {
+  bg: string
+}
+
+export const Container = styled.ScrollView<ContainerType>`
   flex: 1;
-  background-color: #fff;
+  background-color: ${(p) => p.bg};
   padding-left: 46px;
   padding-right: 46px;
 `

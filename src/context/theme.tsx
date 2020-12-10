@@ -1,4 +1,4 @@
-import React, {useEffect, createContext, useState} from 'react'
+import React, {useEffect, createContext, useState, useCallback} from 'react'
 import {ColorSchemeName, Appearance} from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
 
@@ -15,34 +15,35 @@ export const ThemeContext = createContext<ThemeContextData>(
 )
 
 export const ThemeProvider: React.FC = ({children}) => {
-  const [theme, setTheme] = useState<AvailableColors>(
-    Appearance.getColorScheme() === 'light' ? light : dark,
-  )
+  const [theme, setTheme] = useState<AvailableColors>(light)
 
   const handleChangeTheme = (value: ColorSchemeName): void => {
     let scheme = ''
-    if (value === 'light') {
-      setTheme(light)
-      scheme = 'light'
-    } else {
+    if (value === 'dark') {
       setTheme(dark)
       scheme = 'dark'
+    } else {
+      setTheme(light)
+      scheme = 'light'
     }
 
     AsyncStorage.setItem(STORAGE.THEME, scheme)
   }
 
-  const getPreferenceUser = async (): Promise<void> => {
-    const value = (await AsyncStorage.getItem(STORAGE.THEME)) as ColorSchemeName
-
-    if (value) {
-      handleChangeTheme(value)
-    }
-  }
-
   useEffect(() => {
-    getPreferenceUser()
-  })
+    async function getTheme(): Promise<void> {
+      const value = await AsyncStorage.getItem(STORAGE.THEME)
+
+      if (value !== null && (value === 'light' || value === 'dark')) {
+        handleChangeTheme(value)
+      } else {
+        const defaultTheme = Appearance.getColorScheme()
+        handleChangeTheme(defaultTheme)
+      }
+    }
+
+    getTheme()
+  }, [])
 
   useEffect(() => {
     const event = Appearance.addChangeListener(async ({colorScheme}) => {
@@ -54,6 +55,7 @@ export const ThemeProvider: React.FC = ({children}) => {
         handleChangeTheme(colorScheme)
       }
     })
+
     return () => {
       if (event) event.remove()
     }
