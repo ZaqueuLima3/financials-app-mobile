@@ -64,34 +64,28 @@ const CardCollapse: React.FC<CardCollapseProps> = ({
         </ButtonExpand>
       </Header>
 
-      <Body>
-        <TotalWrapper>
-          <RegularText>Saldo total mensal</RegularText>
-          <Saldo visible={isVisible}>{value}</Saldo>
-        </TotalWrapper>
+      {isVisible && (
+        <Body>
+          <TotalWrapper>
+            <RegularText>Saldo total mensal</RegularText>
+            <Saldo visible={isVisible}>{value}</Saldo>
+          </TotalWrapper>
 
-        <Separator />
+          <Separator />
 
-        <More>
-          {transactions[0] && (
+          <More>
             <TotalWrapper>
-              <RegularText>{transactions[0].title}</RegularText>
-              <Saldo visible={isVisible}>
-                {formatValue(transactions[0].value)}
-              </Saldo>
+              <RegularText>dhjska</RegularText>
+              <Saldo visible>dsajkhd</Saldo>
             </TotalWrapper>
-          )}
 
-          {transactions[1] && (
             <TotalWrapper>
-              <RegularText>{transactions[1].title}</RegularText>
-              <Saldo visible={isVisible}>
-                {formatValue(transactions[1].value)}
-              </Saldo>
+              <RegularText>dhjska</RegularText>
+              <Saldo visible>dsajkhd</Saldo>
             </TotalWrapper>
-          )}
-        </More>
-      </Body>
+          </More>
+        </Body>
+      )}
 
       <Footer>
         <SmallLinkButton onPress={() => {}}>

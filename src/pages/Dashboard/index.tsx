@@ -167,6 +167,13 @@ const Dashboard: React.FC = () => {
             (transaction) => transaction.type === 'income',
           )}
         />
+        <CardCollapse
+          title="Receitas"
+          value={income.formattedValue}
+          transactions={transactions.filter(
+            (transaction) => transaction.type === 'income',
+          )}
+        />
       </Body>
     </Container>
   )
