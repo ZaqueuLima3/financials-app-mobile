@@ -2,11 +2,11 @@ import React, {useCallback, useState} from 'react'
 
 import IconFeather from 'react-native-vector-icons/Feather'
 import formatValue from '../../utils/formatValue'
+import {Title} from '../Text'
 
 import {
   Container,
   Header,
-  Title,
   Saldo,
   ButtonExpand,
   Small,
