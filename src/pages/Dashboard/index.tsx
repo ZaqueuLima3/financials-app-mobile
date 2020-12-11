@@ -6,6 +6,7 @@ import api from '../../service/api'
 import SelectMonth from '../../components/SelectMonth'
 import CardResume from '../../components/CardResume'
 import CardCollapse from '../../components/CardCollapse'
+import {getShadow} from '../../styles'
 
 import {Container, CardsWrapper, Body} from './styles'
 import {useColors} from '../../hooks/theme'

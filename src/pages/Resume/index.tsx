@@ -1,7 +1,7 @@
-import React from 'react'
+import React, {useMemo} from 'react'
+import {useNavigation} from '@react-navigation/native'
 import {useColors} from '../../hooks/theme'
-
-import profileImage from '../../assets/profile.png'
+import {useAuth} from '../../hooks/auth'
 
 import {BigTitle, Regular, Title} from '../../components/Text'
 
@@ -18,12 +18,22 @@ import {
   OkButton,
 } from './styles'
 
+import avatar from '../../assets/avatar.png'
+
 const Resume: React.FC = () => {
   const {colors} = useColors()
+  const {user} = useAuth()
+
+  const navigation = useNavigation()
+
+  const source = useMemo(() => {
+    return user.avatar_url ? {uri: user.avatar_url} : avatar
+  }, [user.avatar_url])
+
   return (
     <Container bg={colors.background}>
       <Header>
-        <ImageProfile source={profileImage} />
+        <ImageProfile source={source} />
 
         <Title>Ola Zaqueu Santos</Title>
 
@@ -64,7 +74,7 @@ const Resume: React.FC = () => {
       </Body>
 
       <Footer>
-        <OkButton onPress={() => {}}>
+        <OkButton onPress={() => navigation.navigate('Dashboard')}>
           <Regular color="white" weight="semibold" capitalize>
             Ok, vou poupar
           </Regular>

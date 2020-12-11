@@ -2,6 +2,7 @@ import React from 'react'
 import AsyncStorage from '@react-native-community/async-storage'
 
 import Icon from 'react-native-vector-icons/Feather'
+import {useNavigation} from '@react-navigation/native'
 import {STORAGE} from '../../config/constants'
 import {Regular} from '../../components/Text'
 import {useAuth} from '../../hooks/auth'
@@ -13,6 +14,8 @@ const Settings: React.FC = () => {
   const {signOut} = useAuth()
   const {colors, setTheme} = useColors()
 
+  const navigation = useNavigation()
+
   const handleSetTheme = async (): Promise<void> => {
     const theme = await AsyncStorage.getItem(STORAGE.THEME)
     const value = theme === 'light' ? 'dark' : 'light'
@@ -22,7 +25,7 @@ const Settings: React.FC = () => {
   return (
     <Container bg={colors.container}>
       <Body>
-        <Item onPress={() => {}}>
+        <Item onPress={() => navigation.navigate('Profile')}>
           <Regular>Meu perfil</Regular>
           <Icon name="chevron-right" size={16} color={colors.text} />
         </Item>

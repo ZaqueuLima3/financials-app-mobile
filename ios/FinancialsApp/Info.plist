@@ -61,5 +61,7 @@
 		<string>Montserrat-SemiBold.ttf</string>
     <string>Feather.ttf</string>
 	</array>
+  <key>NSPhotoLibraryUsageDescription</key>
+  <key>NSCameraUsageDescription</key>
 </dict>
 </plist>

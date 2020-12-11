@@ -1,4 +1,5 @@
 import React from 'react'
+import {getShadow} from '../../styles'
 import {useColors} from '../../hooks/theme'
 import {Title, Small, BigTitle} from '../Text'
 import {Container, Header, Body, Footer} from './styles'
@@ -19,7 +20,11 @@ interface CardResumeData {
 const CardResume: React.FC<CardResumeData> = ({item}) => {
   const {colors} = useColors()
   return (
-    <Container bg={colors.container}>
+    <Container
+      style={{
+        ...getShadow(3),
+      }}
+      bg={colors.container}>
       <Header>
         <Title>{item.title}</Title>
         <Small>{item.description}</Small>

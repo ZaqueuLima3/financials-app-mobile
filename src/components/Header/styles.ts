@@ -6,19 +6,18 @@ interface ContainerProps {
 }
 
 export const Container = styled.View<ContainerProps>`
-  width: 100%;
+  width: 80%;
   height: 82px;
   flex-direction: row;
+  align-self: center;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 44px;
-  background-color: ${(p) => p.bg};
+  background-color: ${(props) => props.bg};
   padding-top: 19px;
-  padding-left: ${Platform.OS === 'ios' ? '54px' : '24px'};
-  padding-right: ${Platform.OS === 'ios' ? '54px' : '24px'};
 `
 
-export const ProfileWrapper = styled.View`
+export const ProfileWrapper = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
 `
