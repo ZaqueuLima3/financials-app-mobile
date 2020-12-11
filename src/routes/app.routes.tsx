@@ -7,6 +7,8 @@ import DashboardStackScreen from './stacks/dash.routes'
 import GoalsStackScreen from './stacks/goals.routes'
 import SettingsStackScreen from './stacks/settings.routes'
 import Resume from '../pages/Resume'
+import AddModal, {AddDummy} from '../pages/Add'
+
 import {useColors} from '../hooks/theme'
 
 const App = createBottomTabNavigator()
@@ -28,6 +30,8 @@ const AppRoutes: React.FC = () => {
             iconName = 'coffee'
           } else if (route.name === 'Settings') {
             iconName = 'settings'
+          } else if (route.name === 'Add') {
+            iconName = 'plus-circle'
           }
 
           return <FeatherIcon name={iconName} size={size} color={color} />
@@ -49,6 +53,14 @@ const AppRoutes: React.FC = () => {
         name="Goals"
         component={GoalsStackScreen}
         options={{tabBarLabel: 'Metas'}}
+      />
+
+      <App.Screen
+        name="Add"
+        component={AddDummy}
+        options={{
+          tabBarButton: () => <AddModal />,
+        }}
       />
 
       <App.Screen

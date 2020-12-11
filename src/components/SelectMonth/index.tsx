@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react'
+import React, {useCallback, useMemo} from 'react'
 import {FlatList} from 'react-native'
 import {useColors} from '../../hooks/theme'
 import {Regular} from '../Text'
@@ -7,9 +7,10 @@ import {Container} from './styles'
 
 interface SelectMonthProps {
   onPress: (month: number) => void
+  month: number
 }
 
-const SelectMonth: React.FC<SelectMonthProps> = ({onPress}) => {
+const SelectMonth: React.FC<SelectMonthProps> = ({onPress, month}) => {
   const {colors} = useColors()
   const months = useMemo(
     () => [
@@ -29,13 +30,21 @@ const SelectMonth: React.FC<SelectMonthProps> = ({onPress}) => {
     [],
   )
 
+  const getColors = useCallback(
+    (index) => {
+      const active = index === month
+      return active ? colors.primary : colors.container
+    },
+    [colors.container, colors.primary, month],
+  )
+
   return (
     <FlatList
       data={months}
       keyExtractor={(item) => item.toString()}
       renderItem={({item, index}) => (
-        <Container bg={colors.container} onPress={() => onPress(index)}>
-          <Regular>{item}</Regular>
+        <Container bg={getColors(index)} onPress={() => onPress(index)}>
+          <Regular color={index === month ? 'white' : 'text'}>{item}</Regular>
         </Container>
       )}
       horizontal

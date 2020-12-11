@@ -1,5 +1,5 @@
 import React, {useCallback, useState} from 'react'
-
+import {format} from 'date-fns'
 import IconFeather from 'react-native-vector-icons/Feather'
 import {useColors} from '../../hooks/theme'
 import formatValue from '../../utils/formatValue'
@@ -28,16 +28,18 @@ interface CardCollapseProps {
   title: string
   value: string
   transactions: Transaction[]
+  relatedMonth: Date
 }
 
 const CardCollapse: React.FC<CardCollapseProps> = ({
   title,
   transactions,
   value,
+  relatedMonth,
 }) => {
   const {colors} = useColors()
 
-  const [isVisible, setIsVisible] = useState(true)
+  const [isVisible, setIsVisible] = useState(false)
 
   const handleOpenCard = useCallback(() => {
     setIsVisible((prev) => !prev)
@@ -66,27 +68,34 @@ const CardCollapse: React.FC<CardCollapseProps> = ({
       {isVisible && (
         <Body>
           <TotalWrapper>
-            <Regular>Saldo total mensal</Regular>
+            <Regular>
+              {`${title}: `}
+              <Regular weight="semibold">
+                {format(relatedMonth, 'MM/yyyy')}
+              </Regular>
+            </Regular>
             <Title>{value}</Title>
           </TotalWrapper>
 
-          <Separator />
-          {transactions.length > 0 && (
-            <More>
-              {transactions.slice(0, 2).map((transaction) => (
-                <TotalWrapper>
-                  <Regular>{transaction.title}</Regular>
-                  <Title>{formatValue(transaction.value)}</Title>
-                </TotalWrapper>
-              ))}
-            </More>
+          {transactions?.length > 0 && (
+            <>
+              <Separator />
+              <More>
+                {transactions.map((transaction) => (
+                  <TotalWrapper key={transaction.title}>
+                    <Regular>{transaction.title}</Regular>
+                    <Title>{formatValue(transaction.value)}</Title>
+                  </TotalWrapper>
+                ))}
+              </More>
+            </>
           )}
         </Body>
       )}
 
       <Footer>
         <SmallLinkButton onPress={() => {}}>
-          <Small color="blue">ver detalhes</Small>
+          <Small color="primary">ver detalhes</Small>
         </SmallLinkButton>
       </Footer>
     </Container>
