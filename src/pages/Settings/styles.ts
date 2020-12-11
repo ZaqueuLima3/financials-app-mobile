@@ -1,10 +1,10 @@
 import styled from 'styled-components/native'
 
-interface ContainerType {
+interface ContainerProps {
   bg: string
 }
 
-export const Container = styled.View<ContainerType>`
+export const Container = styled.View<ContainerProps>`
   padding: 30px;
   flex: 1;
   background-color: ${(p) => p.bg};

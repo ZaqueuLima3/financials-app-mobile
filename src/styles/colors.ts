@@ -10,28 +10,27 @@ export const commonColors = {
   blackTransparent: 'rgba(0, 0, 0, 0.14)',
   transparent: 'transparent',
 
-  primary: '#3a2875',
-  secondary: '#f4a63d',
+  primary: '#2FB390',
+  secondary: '#F09542',
   tertiary: '#65c7af',
-  copper: '#b57c00',
+  copper: '#C9C546',
 
-  danger: '#FF0000',
-  warning: '#F4A540',
-  green: '#7AC735',
-  blue: '#0c5ac1',
+  danger: '#D16B55',
+  warning: '#FFCC33',
+  success: '#7AC735',
+  blue: '#004E98',
 
   greenLight: '#D9F2E4',
   redLight: '#FBE0DD',
   blueLight: '#DFEFFF',
-  greyLight: '#F1F1F1',
 
   white: '#FFFFFF',
   black: '#000000',
 
-  grey: '#737175',
-  darkGrey: '#787878',
-  contrastMedium: '#888c95',
-  contrastLight: '#8e8e8f',
+  grey: '#686B72',
+  darkGrey: '#53535A',
+  mediumGrey: '#797E8B',
+  lightGrey: '#F1F1F1',
 }
 
 export const dark: AvailableColors = {

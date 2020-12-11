@@ -7,7 +7,7 @@ import {ColorsPropType, FontWeightPropType} from '../../../styles'
 type PropsRegular = {
   children: ReactNode
   color?: ColorsPropType
-  weight?: Exclude<FontWeightPropType, 'light' | 'bold' | 'ultrabold'>
+  weight?: FontWeightPropType
   capitalize?: boolean
   style?: StyleProp<TextStyle>
   align?: TextAlign

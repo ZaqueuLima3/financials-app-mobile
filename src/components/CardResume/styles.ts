@@ -1,18 +1,14 @@
 import styled from 'styled-components/native'
 
-interface TotalType {
-  value: number
-}
-
-interface ContainerType {
+interface ContainerProps {
   bg: string
 }
 
-interface FooterTye {
+interface FooterProps {
   bg: string
 }
 
-export const Container = styled.View<ContainerType>`
+export const Container = styled.View<ContainerProps>`
   width: 244px;
   height: 230px;
   background-color: ${(p) => p.bg};
@@ -33,7 +29,7 @@ export const Body = styled.View`
   align-items: center;
 `
 
-export const Footer = styled.View<FooterTye>`
+export const Footer = styled.View<FooterProps>`
   height: 44px;
   background: ${(p) => p.bg};
   justify-content: center;

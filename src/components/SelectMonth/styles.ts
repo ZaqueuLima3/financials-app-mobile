@@ -1,10 +1,10 @@
 import styled from 'styled-components/native'
 
-interface ContainerType {
+interface ContainerProps {
   bg: string
 }
 
-export const Container = styled.TouchableOpacity<ContainerType>`
+export const Container = styled.TouchableOpacity<ContainerProps>`
   background-color: ${(p) => p.bg};
   height: 30px;
   box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.14);

@@ -1,6 +1,6 @@
 import styled from 'styled-components/native'
 
-interface ContainerType {
+interface ContainerProps {
   bg: string
 }
 
@@ -8,7 +8,7 @@ export const Container = styled.ScrollView.attrs({
   contentContainerStyle: {
     paddingBottom: 30,
   },
-})<ContainerType>`
+})<ContainerProps>`
   flex: 1;
   background-color: ${(p) => p.bg};
   padding-top: 30px;

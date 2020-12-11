@@ -10,6 +10,7 @@ import {TextInputProperties} from 'react-native'
 import {useField} from '@unform/core'
 
 import {Container, TextInput, Icon} from './styles'
+import {useColors} from '../../hooks/theme'
 
 interface InputProps extends TextInputProperties {
   name: string
@@ -30,6 +31,7 @@ const Input: React.RefForwardingComponent<InputRef, InputProps> = (
   ref,
 ) => {
   const inputElementRef = useRef<any>(null)
+  const {colors} = useColors()
   const {registerField, fieldName, defaultValue = '', error} = useField(name)
   const inputValueRef = useRef<InputValueReference>({value: defaultValue})
 
@@ -69,16 +71,21 @@ const Input: React.RefForwardingComponent<InputRef, InputProps> = (
   }, [fieldName, registerField])
 
   return (
-    <Container style={containerStyle} isFocused={isFocused} hasError={!!error}>
+    <Container
+      colors={colors}
+      style={containerStyle}
+      isFocused={isFocused}
+      hasError={!!error}>
       <Icon
         name={icon}
         size={20}
-        color={isFocused || isFilled ? '#3a2875' : '#666360'}
+        color={isFocused || isFilled ? colors.primary : colors.text}
       />
 
       <TextInput
         ref={inputElementRef}
-        placeholderTextColor="#666360"
+        color={colors.text}
+        placeholderTextColor={colors.mediumGrey}
         defaultValue={defaultValue}
         onFocus={handleInputFocus}
         onBlur={handleInputBlur}

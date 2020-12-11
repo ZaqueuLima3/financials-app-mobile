@@ -13,7 +13,7 @@ export type AvailableColors = {
   tertiary: string
   danger: string
   warning: string
-  green: string
+  success: string
   blue: string
   greenLight: string
   redLight: string
@@ -21,12 +21,11 @@ export type AvailableColors = {
   transparent: string
   white: string
   blackTransparent: string
-  grey: string
-  greyLight: string
-  darkGrey: string
   black: string
-  contrastLight: string
-  contrastMedium: string
+  grey: string
+  darkGrey: string
+  lightGrey: string
+  mediumGrey: string
 }
 
 export type ColorsPropType =
@@ -44,7 +43,7 @@ export type ColorsPropType =
   | 'tertiary'
   | 'danger'
   | 'warning'
-  | 'green'
+  | 'success'
   | 'blue'
   | 'greenLight'
   | 'redLight'
@@ -53,11 +52,10 @@ export type ColorsPropType =
   | 'white'
   | 'blackTransparent'
   | 'grey'
-  | 'greyLight'
-  | 'darkGrey'
   | 'black'
-  | 'contrastLight'
-  | 'contrastMedium'
+  | 'darkGrey'
+  | 'lightGrey'
+  | 'mediumGrey'
 
 export type FontSizePropType =
   | 'small'

@@ -1,9 +1,15 @@
 import styled, {css} from 'styled-components/native'
 import FeatherIcon from 'react-native-vector-icons/Feather'
+import {AvailableColors} from '../../styles/themeType'
 
 interface ContainerProps {
   isFocused: boolean
   hasError: boolean
+  colors: AvailableColors
+}
+
+interface TextInputProps {
+  color: string
 }
 
 export const Container = styled.View<ContainerProps>`
@@ -13,24 +19,24 @@ export const Container = styled.View<ContainerProps>`
   border-radius: 4px;
   margin-bottom: 10px;
   border-width: 0.5px;
-  border-color: #201027;
+  border-color: ${(p) => p.colors.text};
   flex-direction: row;
   align-items: center;
   ${(props) =>
     props.hasError &&
     css`
-      border-color: #c53030;
+      border-color: ${props.colors.danger};
     `}
   ${(props) =>
     props.isFocused &&
     css`
-      border-color: #3a2875;
+      border-color: ${props.colors.tertiary};
     `}
 `
 
-export const TextInput = styled.TextInput`
+export const TextInput = styled.TextInput<TextInputProps>`
   flex: 1;
-  color: #47455a;
+  color: ${(p) => p.color};
   font-size: 16px;
   font-family: 'Montserrat-Regular';
 `

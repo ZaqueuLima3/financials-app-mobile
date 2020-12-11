@@ -21,7 +21,7 @@ export const HeadLine: FC<PropsHeadLine> = ({
     <Text
       size="headLine"
       color={color}
-      weight="light"
+      weight="bold"
       capitalize={capitalize}
       align={align}
       {...props}>

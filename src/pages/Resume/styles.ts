@@ -1,11 +1,11 @@
 import styled from 'styled-components/native'
 import {Platform} from 'react-native'
 
-interface ContainerType {
+interface ContainerProps {
   bg: string
 }
 
-export const Container = styled.ScrollView<ContainerType>`
+export const Container = styled.ScrollView<ContainerProps>`
   flex: 1;
   background-color: ${(p) => p.bg};
   padding-left: 46px;

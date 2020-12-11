@@ -1,11 +1,11 @@
 import styled from 'styled-components/native'
 import {Platform} from 'react-native'
 
-interface ContainerType {
+interface ContainerProps {
   bg: string
 }
 
-export const Container = styled.View<ContainerType>`
+export const Container = styled.View<ContainerProps>`
   width: 100%;
   height: 82px;
   flex-direction: row;

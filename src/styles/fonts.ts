@@ -6,7 +6,7 @@ export const fontSize = {
   subtitle: 14,
   title: 16,
   bigTitle: 20,
-  headLine: 32,
+  headLine: 30,
 }
 
 export const fontWeight = {

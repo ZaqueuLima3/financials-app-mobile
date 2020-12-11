@@ -2,11 +2,11 @@ import styled from 'styled-components/native'
 
 import Icon from 'react-native-vector-icons/Feather'
 
-interface ContainerType {
+interface ContainerProps {
   bg: string
 }
 
-export const Container = styled.View<ContainerType>`
+export const Container = styled.View<ContainerProps>`
   width: 100%;
   height: 126px;
   border-radius: 8px;
