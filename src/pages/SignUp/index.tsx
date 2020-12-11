@@ -1,13 +1,17 @@
 import React, {useRef, useCallback} from 'react'
-import {TouchableOpacity, TextInput} from 'react-native'
+import {TouchableOpacity, TextInput, Alert} from 'react-native'
 import {FormHandles} from '@unform/core'
 
 import {useNavigation} from '@react-navigation/native'
-import {useColors} from '../../hooks/theme'
+import * as Yup from 'yup'
 
-import logo from '../../assets/logo.png'
+import api from '../../service/api'
+import {useColors} from '../../hooks/theme'
 import Input from '../../components/Input'
 import {Regular} from '../../components/Text'
+import getValidationErrors from '../../utils/getValidationErrors'
+
+import logo from '../../assets/logo.png'
 
 import {
   Container,
@@ -16,9 +20,14 @@ import {
   Form,
   Button,
   ButtonText,
-  SmallText,
   Footer,
 } from './styles'
+
+interface SignupFormData {
+  name: string
+  email: string
+  password: string
+}
 
 const SignIn: React.FC = () => {
   const navigation = useNavigation()
@@ -28,9 +37,48 @@ const SignIn: React.FC = () => {
 
   const {colors} = useColors()
 
-  const handleSignIn = useCallback((data) => {
-    console.log(data)
-  }, [])
+  const handleSignUp = useCallback(
+    async (data: SignupFormData) => {
+      try {
+        formRef.current?.setErrors({})
+
+        const schema = Yup.object().shape({
+          name: Yup.string().required('Nome obrigatório'),
+          email: Yup.string()
+            .required('E-mail obrigatório')
+            .email('Insira um e-mail válido'),
+          password: Yup.string().min(6, 'Mínimo 6 dígitos'),
+        })
+
+        await schema.validate(data, {
+          abortEarly: false,
+        })
+
+        await api.post('/users', data)
+
+        Alert.alert(
+          'Cadastro realizado com sucesso!',
+          'Você já pode fazer login na aplicação',
+        )
+
+        navigation.goBack()
+      } catch (err) {
+        if (err instanceof Yup.ValidationError) {
+          const errors = getValidationErrors(err)
+
+          formRef.current?.setErrors(errors)
+
+          return
+        }
+
+        Alert.alert(
+          'Erro no cadastro',
+          'Ocorreu um erro ao fazer cadastro, tente novamente',
+        )
+      }
+    },
+    [navigation],
+  )
 
   return (
     <Container bg={colors.container}>
@@ -39,7 +87,7 @@ const SignIn: React.FC = () => {
       <Title>Bem Vindo</Title>
       <Regular>Crie sua conta gratis</Regular>
 
-      <Form ref={formRef} onSubmit={handleSignIn}>
+      <Form ref={formRef} onSubmit={handleSignUp}>
         <Input
           autoCapitalize="words"
           name="name"
