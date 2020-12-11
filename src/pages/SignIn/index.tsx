@@ -72,7 +72,7 @@ const SignIn: React.FC = () => {
         <Button
           bg={colors.primary}
           onPress={() => formRef.current?.submitForm()}>
-          <ButtonText>Enriquecer</ButtonText>
+          <ButtonText color="white">Enriquecer</ButtonText>
         </Button>
       </Form>
 

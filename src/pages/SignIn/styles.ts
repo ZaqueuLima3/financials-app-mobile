@@ -1,6 +1,6 @@
 import styled from 'styled-components/native'
 import {Form as UnForm} from '@unform/mobile'
-import {HeadLine} from '../../components/Text'
+import {HeadLine, Title as TitleComponent} from '../../components/Text'
 
 interface ContainerProps {
   bg: string
@@ -50,17 +50,8 @@ export const ForgotPasswordButton = styled.TouchableOpacity`
   align-items: flex-end;
 `
 
-export const ButtonText = styled.Text`
+export const ButtonText = styled(TitleComponent)`
   text-transform: uppercase;
-  color: #ffffff;
-  font-size: 16px;
-  font-family: 'Montserrat-Bold';
-`
-
-export const SmallText = styled.Text`
-  color: #1b1238;
-  font-size: 16px;
-  font-family: 'Montserrat-Regular';
 `
 
 export const Footer = styled.View`

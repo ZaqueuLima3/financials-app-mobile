@@ -3,9 +3,11 @@ import {TouchableOpacity, TextInput} from 'react-native'
 import {FormHandles} from '@unform/core'
 
 import {useNavigation} from '@react-navigation/native'
+import {useColors} from '../../hooks/theme'
 
 import logo from '../../assets/logo.png'
 import Input from '../../components/Input'
+import {Regular} from '../../components/Text'
 
 import {
   Container,
@@ -24,15 +26,18 @@ const SignIn: React.FC = () => {
   const emailInputRef = useRef<TextInput>(null)
   const passwordInputRef = useRef<TextInput>(null)
 
+  const {colors} = useColors()
+
   const handleSignIn = useCallback((data) => {
     console.log(data)
   }, [])
 
   return (
-    <Container>
+    <Container bg={colors.container}>
       <Logo source={logo} />
 
-      <Title>Crie sua conta</Title>
+      <Title>Bem Vindo</Title>
+      <Regular>Crie sua conta gratis</Regular>
 
       <Form ref={formRef} onSubmit={handleSignIn}>
         <Input
@@ -70,14 +75,21 @@ const SignIn: React.FC = () => {
           onSubmitEditing={() => formRef.current?.submitForm()}
         />
 
-        <Button onPress={() => formRef.current?.submitForm()}>
+        <Button
+          bg={colors.primary}
+          onPress={() => formRef.current?.submitForm()}>
           <ButtonText>Enriquecer agora</ButtonText>
         </Button>
       </Form>
 
       <Footer>
         <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
-          <SmallText>Voltar para login</SmallText>
+          <Regular>
+            Já possuí uma conta?{' '}
+            <Regular color="primary" weight="semibold">
+              Login
+            </Regular>
+          </Regular>
         </TouchableOpacity>
       </Footer>
     </Container>
