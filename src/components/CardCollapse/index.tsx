@@ -5,6 +5,8 @@ import {useColors} from '../../hooks/theme'
 import formatValue from '../../utils/formatValue'
 import {Title, Small, Regular} from '../Text'
 
+import Skeleton from './skeleton'
+
 import {
   Container,
   Header,
@@ -27,6 +29,7 @@ interface Transaction {
 interface CardCollapseProps {
   title: string
   value: string
+  loading: boolean
   transactions: Transaction[]
   relatedMonth: Date
 }
@@ -36,6 +39,7 @@ const CardCollapse: React.FC<CardCollapseProps> = ({
   transactions,
   value,
   relatedMonth,
+  loading = true,
 }) => {
   const {colors} = useColors()
 
@@ -47,57 +51,71 @@ const CardCollapse: React.FC<CardCollapseProps> = ({
 
   return (
     <Container bg={colors.container}>
-      <Header>
-        <Title>{title}</Title>
+      {loading ? (
+        <Skeleton />
+      ) : (
+        <>
+          <Header>
+            <Title>{title}</Title>
 
-        <ButtonExpand onPress={handleOpenCard}>
-          {isVisible ? (
-            <>
-              <Small style={{marginRight: 5}}>ocultar</Small>
-              <IconFeather name="chevron-up" color={colors.text} size={12} />
-            </>
-          ) : (
-            <>
-              <Small style={{marginRight: 5}}>exibir</Small>
-              <IconFeather name="chevron-down" color={colors.text} size={12} />
-            </>
+            <ButtonExpand onPress={handleOpenCard}>
+              {isVisible ? (
+                <>
+                  <Small style={{marginRight: 5}}>ocultar</Small>
+                  <IconFeather
+                    name="chevron-up"
+                    color={colors.text}
+                    size={12}
+                  />
+                </>
+              ) : (
+                <>
+                  <Small style={{marginRight: 5}}>exibir</Small>
+                  <IconFeather
+                    name="chevron-down"
+                    color={colors.text}
+                    size={12}
+                  />
+                </>
+              )}
+            </ButtonExpand>
+          </Header>
+
+          {isVisible && (
+            <Body>
+              <TotalWrapper>
+                <Regular>
+                  {`${title}: `}
+                  <Regular weight="semibold">
+                    {format(relatedMonth, 'MM/yyyy')}
+                  </Regular>
+                </Regular>
+                <Title>{value}</Title>
+              </TotalWrapper>
+
+              {transactions?.length > 0 && (
+                <>
+                  <Separator />
+                  <More>
+                    {transactions.map((transaction) => (
+                      <TotalWrapper key={transaction.title}>
+                        <Regular>{transaction.title}</Regular>
+                        <Title>{formatValue(transaction.value)}</Title>
+                      </TotalWrapper>
+                    ))}
+                  </More>
+                </>
+              )}
+            </Body>
           )}
-        </ButtonExpand>
-      </Header>
 
-      {isVisible && (
-        <Body>
-          <TotalWrapper>
-            <Regular>
-              {`${title}: `}
-              <Regular weight="semibold">
-                {format(relatedMonth, 'MM/yyyy')}
-              </Regular>
-            </Regular>
-            <Title>{value}</Title>
-          </TotalWrapper>
-
-          {transactions?.length > 0 && (
-            <>
-              <Separator />
-              <More>
-                {transactions.map((transaction) => (
-                  <TotalWrapper key={transaction.title}>
-                    <Regular>{transaction.title}</Regular>
-                    <Title>{formatValue(transaction.value)}</Title>
-                  </TotalWrapper>
-                ))}
-              </More>
-            </>
-          )}
-        </Body>
+          <Footer>
+            <SmallLinkButton onPress={() => {}}>
+              <Small color="primary">ver detalhes</Small>
+            </SmallLinkButton>
+          </Footer>
+        </>
       )}
-
-      <Footer>
-        <SmallLinkButton onPress={() => {}}>
-          <Small color="primary">ver detalhes</Small>
-        </SmallLinkButton>
-      </Footer>
     </Container>
   )
 }

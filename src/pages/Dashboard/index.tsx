@@ -45,6 +45,7 @@ interface DashboardType {
 const Dashboard: React.FC = () => {
   const {colors} = useColors()
 
+  const [loading, setLoading] = useState(true)
   const [currentMonth, setCurrentMonth] = useState(new Date())
   const [transactions, setTransactions] = useState({} as Transactions)
 
@@ -85,6 +86,7 @@ const Dashboard: React.FC = () => {
   } as ResumeCard)
 
   useEffect(() => {
+    setLoading(true)
     async function recoverAccountResume(): Promise<void> {
       const response = await api.get<DashboardType>('dash', {
         params: {
@@ -121,6 +123,7 @@ const Dashboard: React.FC = () => {
       }))
 
       setTransactions(data.transactions)
+      setLoading(false)
     }
 
     recoverAccountResume()
@@ -162,6 +165,7 @@ const Dashboard: React.FC = () => {
           relatedMonth={currentMonth}
           value={formatValue(transactions.totalOutcome)}
           transactions={transactions.outcomes}
+          loading={loading}
         />
 
         <CardCollapse
@@ -169,6 +173,7 @@ const Dashboard: React.FC = () => {
           relatedMonth={currentMonth}
           value={formatValue(transactions.totalIncome)}
           transactions={transactions.incomes}
+          loading={loading}
         />
       </Body>
     </Container>

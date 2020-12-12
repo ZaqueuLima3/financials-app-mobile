@@ -13,7 +13,7 @@ const GoalsStackScreen: React.FC = () => {
   return (
     <GoalsStack.Navigator>
       <GoalsStack.Screen
-        name="Home"
+        name="Goals"
         component={Goals}
         options={{
           headerTitle: () => <Header />,

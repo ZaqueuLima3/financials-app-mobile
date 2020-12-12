@@ -14,7 +14,7 @@ const SettingsStackScreen: React.FC = () => {
   return (
     <SettingsStack.Navigator>
       <SettingsStack.Screen
-        name="Set"
+        name="Settings"
         component={Settings}
         options={{
           headerTitle: () => <Header />,

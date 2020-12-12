@@ -7,6 +7,7 @@ import DashboardStackScreen from './stacks/dash.routes'
 import GoalsStackScreen from './stacks/goals.routes'
 import SettingsStackScreen from './stacks/settings.routes'
 import Resume from '../pages/Resume'
+
 import AddModal, {AddDummy} from '../pages/Add'
 
 import {useColors} from '../hooks/theme'
