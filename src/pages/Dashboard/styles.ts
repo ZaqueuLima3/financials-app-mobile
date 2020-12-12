@@ -17,6 +17,8 @@ export const Container = styled.ScrollView.attrs({
 
 export const CardsWrapper = styled.View`
   margin-left: 20px;
+  padding-bottom: 5px;
+  padding-top: 5px;
 `
 export const Body = styled.View`
   padding-left: 21px;

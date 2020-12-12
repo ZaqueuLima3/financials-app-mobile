@@ -48,7 +48,7 @@ const AddModal: React.FC = () => {
               <IconWrapper bg={colors.background}>
                 <Icon name="credit-card" size={20} color={colors.text} />
               </IconWrapper>
-              <Regular>Cartão de credito</Regular>
+              <Regular>Cartão</Regular>
             </OptionWrapper>
 
             <OptionWrapper onPress={() => {}}>
@@ -56,6 +56,13 @@ const AddModal: React.FC = () => {
                 <Icon name="pocket" size={20} color={colors.text} />
               </IconWrapper>
               <Regular>Conta</Regular>
+            </OptionWrapper>
+
+            <OptionWrapper onPress={() => {}}>
+              <IconWrapper bg={colors.background}>
+                <Icon name="target" size={20} color={colors.text} />
+              </IconWrapper>
+              <Regular>Meta</Regular>
             </OptionWrapper>
 
             <OptionWrapper onPress={() => {}}>
