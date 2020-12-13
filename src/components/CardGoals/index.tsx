@@ -1,4 +1,5 @@
 import React from 'react'
+import {useColors} from '../../hooks/theme'
 
 import walpImage from '../../assets/walp.png'
 
@@ -9,15 +10,16 @@ import {
   Content,
   GoalImage,
   GoalsInfo,
-  Title,
   Wrapper,
   IconFeather,
-  SmallText,
 } from './styles'
+import {Small, Title} from '../Text'
 
 const CardGoals: React.FC = () => {
+  const {colors} = useColors()
+
   return (
-    <Container>
+    <Container bg={colors.container}>
       <Progress>
         <ProgressInt />
       </Progress>
@@ -29,12 +31,12 @@ const CardGoals: React.FC = () => {
           <Title>Reserva de emergência</Title>
           <Wrapper>
             <IconFeather name="calendar" />
-            <SmallText>20/05/2021</SmallText>
+            <Small>20/05/2021</Small>
           </Wrapper>
 
           <Wrapper>
             <IconFeather name="target" />
-            <SmallText>R$ 25.000,00</SmallText>
+            <Small>R$ 25.000,00</Small>
           </Wrapper>
         </GoalsInfo>
       </Content>

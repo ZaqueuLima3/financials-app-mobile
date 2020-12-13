@@ -1,9 +1,13 @@
 import styled from 'styled-components/native'
 
-export const Container = styled.View`
+interface ContainerProps {
+  bg: string
+}
+
+export const Container = styled.View<ContainerProps>`
   padding: 30px;
   flex: 1;
-  background-color: #f0f2f5;
+  background-color: ${(p) => p.bg};
 `
 
 export const Body = styled.View``
@@ -16,10 +20,4 @@ export const Item = styled.TouchableOpacity`
   padding: 15px 0;
   border-color: rgba(72, 87, 107, 0.3);
   border-bottom-width: 0.5px;
-`
-
-export const Text = styled.Text`
-  color: #48576b;
-  font-family: 'Montserrat-Regular';
-  font-size: 16px;
 `

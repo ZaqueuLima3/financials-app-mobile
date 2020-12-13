@@ -2,11 +2,15 @@ import styled from 'styled-components/native'
 
 import Icon from 'react-native-vector-icons/Feather'
 
-export const Container = styled.View`
+interface ContainerProps {
+  bg: string
+}
+
+export const Container = styled.View<ContainerProps>`
   width: 100%;
   height: 126px;
   border-radius: 8px;
-  background-color: #fff;
+  background-color: ${(p) => p.bg};
   padding: 14px 25px;
   margin-bottom: 30px;
   box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.14);
@@ -15,13 +19,13 @@ export const Container = styled.View`
 export const ProgressInt = styled.View`
   width: 35%;
   height: 100%;
-  background-color: #3a2875;
+  background-color: #65c7af;
   margin-bottom: 12px;
 `
 export const Progress = styled.View`
   width: 100%;
   height: 5px;
-  background-color: #3a287550;
+  background-color: #65c7af50;
   margin-bottom: 12px;
 `
 
@@ -39,13 +43,6 @@ export const GoalsInfo = styled.View`
   margin-left: 15px;
 `
 
-export const Title = styled.Text`
-  color: #48576b;
-  font-family: 'Montserrat-Bold';
-  font-size: 16px;
-  margin-bottom: 4px;
-`
-
 export const Wrapper = styled.View`
   flex-direction: row;
   align-items: center;
@@ -55,10 +52,4 @@ export const Wrapper = styled.View`
 export const IconFeather = styled(Icon)`
   color: #f4a63d;
   margin-right: 5px;
-`
-
-export const SmallText = styled.Text`
-  color: #48576b;
-  font-family: 'Montserrat-Regular';
-  font-size: 12px;
 `

@@ -1,34 +1,37 @@
-import React from 'react'
+import React, {useMemo} from 'react'
 
 import IconFeather from 'react-native-vector-icons/Feather'
+import {useNavigation} from '@react-navigation/native'
 import {useAuth} from '../../hooks/auth'
+import {useColors} from '../../hooks/theme'
 
-import profileImage from '../../assets/profile.png'
+import avatar from '../../assets/avatar.png'
+import {Title} from '../Text'
 
-import {
-  Container,
-  ProfileWrapper,
-  ImageProfile,
-  WelcomeWrapper,
-  Title,
-  TextName,
-} from './styles'
+import {Container, ProfileWrapper, ImageProfile, WelcomeWrapper} from './styles'
 
 const Header: React.FC = () => {
   const {user} = useAuth()
+  const {colors} = useColors()
+
+  const navigation = useNavigation()
+
+  const source = useMemo(() => {
+    return user.avatar_url ? {uri: user.avatar_url} : avatar
+  }, [user.avatar_url])
 
   return (
-    <Container>
-      <ProfileWrapper>
-        <ImageProfile source={profileImage} />
+    <Container bg={colors.container}>
+      <ProfileWrapper onPress={() => navigation.navigate('Profile')}>
+        <ImageProfile source={source} />
 
         <WelcomeWrapper>
           <Title>Bem Vindo (a)</Title>
-          <TextName>{user.name}</TextName>
+          <Title color="secondary">{user.name}</Title>
         </WelcomeWrapper>
       </ProfileWrapper>
 
-      <IconFeather name="bell" size={25} />
+      <IconFeather name="bell" color={colors.text} size={25} />
     </Container>
   )
 }

@@ -1,76 +1,101 @@
 import React, {useCallback, useState} from 'react'
-
+import {format} from 'date-fns'
 import IconFeather from 'react-native-vector-icons/Feather'
+import {useColors} from '../../hooks/theme'
+import formatValue from '../../utils/formatValue'
+import {Title, Small, Regular} from '../Text'
 
 import {
   Container,
   Header,
-  Title,
   ButtonExpand,
-  Small,
   Body,
   TotalWrapper,
-  RegularText,
   Separator,
   More,
   Footer,
   SmallLinkButton,
-  SmallLinkText,
 } from './styles'
 
-const CardCollapse: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false)
+interface Transaction {
+  title: string
+  paid: boolean
+  type: 'income' | 'outcome'
+  value: number
+}
+
+interface CardCollapseProps {
+  title: string
+  value: string
+  transactions: Transaction[]
+  relatedMonth: Date
+}
+
+const CardCollapse: React.FC<CardCollapseProps> = ({
+  title,
+  transactions,
+  value,
+  relatedMonth,
+}) => {
+  const {colors} = useColors()
+
+  const [isVisible, setIsVisible] = useState(false)
 
   const handleOpenCard = useCallback(() => {
-    setIsOpen((isOpenState) => !isOpenState)
+    setIsVisible((prev) => !prev)
   }, [])
 
   return (
-    <Container>
+    <Container bg={colors.container}>
       <Header>
-        <Title>Carteira</Title>
+        <Title>{title}</Title>
 
         <ButtonExpand onPress={handleOpenCard}>
-          {isOpen ? (
+          {isVisible ? (
             <>
-              <Small>ocultar</Small>
-              <IconFeather name="chevron-up" size={11} />
+              <Small style={{marginRight: 5}}>ocultar</Small>
+              <IconFeather name="chevron-up" color={colors.text} size={12} />
             </>
           ) : (
             <>
-              <Small>exibir</Small>
-              <IconFeather name="chevron-down" size={11} />
+              <Small style={{marginRight: 5}}>exibir</Small>
+              <IconFeather name="chevron-down" color={colors.text} size={12} />
             </>
           )}
         </ButtonExpand>
       </Header>
 
-      {isOpen && (
+      {isVisible && (
         <Body>
           <TotalWrapper>
-            <RegularText>Saldo total mensal</RegularText>
-            <Title>R$ 2.200,00</Title>
+            <Regular>
+              {`${title}: `}
+              <Regular weight="semibold">
+                {format(relatedMonth, 'MM/yyyy')}
+              </Regular>
+            </Regular>
+            <Title>{value}</Title>
           </TotalWrapper>
 
-          <Separator />
-
-          <More>
-            <TotalWrapper>
-              <RegularText>Pagamento</RegularText>
-              <Title>R$ 2.200,00</Title>
-            </TotalWrapper>
-
-            <TotalWrapper>
-              <RegularText>Vale refeição</RegularText>
-              <Title>R$ 2.200,00</Title>
-            </TotalWrapper>
-          </More>
+          {transactions?.length > 0 && (
+            <>
+              <Separator />
+              <More>
+                {transactions.map((transaction) => (
+                  <TotalWrapper key={transaction.title}>
+                    <Regular>{transaction.title}</Regular>
+                    <Title>{formatValue(transaction.value)}</Title>
+                  </TotalWrapper>
+                ))}
+              </More>
+            </>
+          )}
         </Body>
       )}
 
       <Footer>
         <SmallLinkButton onPress={() => {}}>
-          <SmallLinkText>ver detalhes</SmallLinkText>
+          <Small color="primary">ver detalhes</Small>
         </SmallLinkButton>
       </Footer>
     </Container>
