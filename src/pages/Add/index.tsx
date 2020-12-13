@@ -1,4 +1,5 @@
-import React, {useState} from 'react'
+import React, {useCallback, useState} from 'react'
+import {useNavigation} from '@react-navigation/native'
 import {TouchableOpacity} from 'react-native-gesture-handler'
 import Modal from 'react-native-modal'
 import Icon from 'react-native-vector-icons/Feather'
@@ -16,7 +17,13 @@ import {
 
 const AddModal: React.FC = () => {
   const [modalVisible, setModalVisible] = useState(false)
+  const navigation = useNavigation()
   const {colors} = useColors()
+
+  const handleOpenPage = useCallback((route, params) => {
+    setModalVisible(false)
+    navigation.navigate(route, params)
+  }, [])
 
   return (
     <>
@@ -65,14 +72,24 @@ const AddModal: React.FC = () => {
               <Regular>Meta</Regular>
             </OptionWrapper>
 
-            <OptionWrapper onPress={() => {}}>
+            <OptionWrapper
+              onPress={() =>
+                handleOpenPage('TransactionCreate', {
+                  type: 'outcome',
+                })
+              }>
               <IconWrapper bg={colors.background}>
                 <Icon name="shopping-bag" size={20} color={colors.text} />
               </IconWrapper>
               <Regular>Despesa</Regular>
             </OptionWrapper>
 
-            <OptionWrapper onPress={() => {}}>
+            <OptionWrapper
+              onPress={() =>
+                handleOpenPage('TransactionCreate', {
+                  type: 'income',
+                })
+              }>
               <IconWrapper bg={colors.background}>
                 <Icon name="dollar-sign" size={20} color={colors.text} />
               </IconWrapper>

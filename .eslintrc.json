@@ -45,6 +45,7 @@
       "@typescript-eslint/no-empty-function": "off",
       "@typescript-eslint/camelcase": "off",
       "react/jsx-filename-extension": "off",
+      "react/jsx-curly-newline": "off",
       "@typescript-eslint/explicit-function-return-type": [
       "error",
       {

@@ -2,8 +2,11 @@ import React from 'react'
 import {createStackNavigator} from '@react-navigation/stack'
 import {Platform} from 'react-native'
 
-import Header from '../../components/Header'
 import Dashboard from '../../pages/Dashboard'
+import TransactionCreate from '../../pages/TransactionCreate'
+
+import Header from '../../components/Header'
+
 import {useColors} from '../../hooks/theme'
 
 const DashboardStack = createStackNavigator()
@@ -22,6 +25,16 @@ const DashboardStackScreen: React.FC = () => {
           },
           headerStyle: {
             backgroundColor: colors.container,
+          },
+        }}
+      />
+      <DashboardStack.Screen
+        name="TransactionCreate"
+        component={TransactionCreate}
+        options={{
+          headerShown: false,
+          safeAreaInsets: {
+            top: Platform.OS === 'ios' ? 60 : 20,
           },
         }}
       />
