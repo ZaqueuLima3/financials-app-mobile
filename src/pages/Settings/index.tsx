@@ -1,24 +1,21 @@
 import React from 'react'
-import AsyncStorage from '@react-native-community/async-storage'
 
 import Icon from 'react-native-vector-icons/Feather'
 import {useNavigation} from '@react-navigation/native'
-import {STORAGE} from '../../config/constants'
 import {Regular} from '../../components/Text'
 import {useAuth} from '../../hooks/auth'
-import {useColors} from '../../hooks/theme'
+import {useTheme} from '../../hooks/theme'
 
 import {Container, Body, Item} from './styles'
 
 const Settings: React.FC = () => {
   const {signOut} = useAuth()
-  const {colors, setTheme} = useColors()
+  const {colors, scheme, setTheme} = useTheme()
 
   const navigation = useNavigation()
 
   const handleSetTheme = async (): Promise<void> => {
-    const theme = await AsyncStorage.getItem(STORAGE.THEME)
-    const value = theme === 'light' ? 'dark' : 'light'
+    const value = scheme === 'light' ? 'dark' : 'light'
     setTheme(value)
   }
 

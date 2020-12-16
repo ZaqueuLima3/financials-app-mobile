@@ -10,12 +10,12 @@ import Resume from '../pages/Resume'
 
 import AddModal, {AddDummy} from '../pages/Add'
 
-import {useColors} from '../hooks/theme'
+import {useTheme} from '../hooks/theme'
 
 const App = createBottomTabNavigator()
 
 const AppRoutes: React.FC = () => {
-  const {colors} = useColors()
+  const {colors} = useTheme()
 
   return (
     <App.Navigator

@@ -9,7 +9,7 @@ import CardResume from '../../components/CardResume'
 import CardCollapse from '../../components/CardCollapse'
 
 import {Container, CardsWrapper, Body} from './styles'
-import {useColors} from '../../hooks/theme'
+import {useTheme} from '../../hooks/theme'
 
 interface ResumeCard {
   id: number
@@ -43,7 +43,7 @@ interface DashboardType {
 }
 
 const Dashboard: React.FC = () => {
-  const {colors} = useColors()
+  const {colors} = useTheme()
 
   const [loading, setLoading] = useState(true)
   const [currentMonth, setCurrentMonth] = useState(new Date())

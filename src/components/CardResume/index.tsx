@@ -1,6 +1,6 @@
 import React from 'react'
 import {getShadow} from '../../styles'
-import {useColors} from '../../hooks/theme'
+import {useTheme} from '../../hooks/theme'
 import {Title, Small, BigTitle} from '../Text'
 import {Container, Header, Body, Footer} from './styles'
 
@@ -18,7 +18,7 @@ interface CardResumeData {
 }
 
 const CardResume: React.FC<CardResumeData> = ({item}) => {
-  const {colors} = useColors()
+  const {colors} = useTheme()
   return (
     <Container
       style={{

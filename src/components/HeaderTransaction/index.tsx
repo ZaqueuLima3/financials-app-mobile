@@ -1,12 +1,10 @@
 import React, {useMemo} from 'react'
-
 import IconFeather from 'react-native-vector-icons/Feather'
 import {useNavigation} from '@react-navigation/native'
-import {StatusBar} from 'react-native'
-import {useAuth} from '../../hooks/auth'
-import {useColors} from '../../hooks/theme'
+import {TouchableOpacity} from 'react-native'
 
-import avatar from '../../assets/avatar.png'
+import {useTheme} from '../../hooks/theme'
+
 import {Title} from '../Text'
 
 import {Container, Content, TitleWrapper} from './styles'
@@ -16,19 +14,25 @@ interface HeaderTransactionProps {
 }
 
 const HeaderTransaction: React.FC<HeaderTransactionProps> = ({type}) => {
-  const {user} = useAuth()
-  const {colors} = useColors()
+  const {goBack} = useNavigation()
+  const {colors, scheme} = useTheme()
 
   const navigation = useNavigation()
 
   const bg = useMemo(() => {
+    if (scheme.includes('dark')) {
+      return colors.container
+    }
+
     return type === 'outcome' ? colors.danger : colors.primary
-  }, [colors.danger, colors.primary, type])
+  }, [colors.container, colors.danger, colors.primary, scheme, type])
 
   return (
     <Container bg={bg}>
       <Content onPress={() => navigation.navigate('Profile')}>
-        <IconFeather name="arrow-left" color={colors.white} size={25} />
+        <TouchableOpacity onPress={() => goBack()}>
+          <IconFeather name="arrow-left" color={colors.white} size={25} />
+        </TouchableOpacity>
         <TitleWrapper>
           <Title color="white">Nova despesa</Title>
         </TitleWrapper>

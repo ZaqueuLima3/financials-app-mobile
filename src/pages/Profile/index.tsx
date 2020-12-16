@@ -22,7 +22,7 @@ import Button from '../../components/Button'
 
 import getValidationErrors from '../../utils/getValidationErrors'
 import {useAuth} from '../../hooks/auth'
-import {useColors} from '../../hooks/theme'
+import {useTheme} from '../../hooks/theme'
 
 import {
   Container,
@@ -44,7 +44,7 @@ interface ProfileFormData {
 
 const Profile: React.FC = () => {
   const {user, updateUser} = useAuth()
-  const {colors} = useColors()
+  const {colors} = useTheme()
 
   const formRef = useRef<FormHandles>(null)
   const emailInputRef = useRef<TextInput>(null)

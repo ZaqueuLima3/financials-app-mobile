@@ -1,7 +1,7 @@
 import React from 'react'
 import {RectButtonProperties} from 'react-native-gesture-handler'
 
-import {useColors} from '../../hooks/theme'
+import {useTheme} from '../../hooks/theme'
 import {Regular} from '../Text'
 
 import {Container} from './styles'
@@ -16,7 +16,7 @@ const Button: React.FC<ButtonProps> = ({
   containerStyle = {},
   ...rest
 }) => {
-  const {colors} = useColors()
+  const {colors} = useTheme()
   return (
     <Container bg={colors.primary} style={containerStyle} {...rest}>
       <Regular color="white" weight="bold">

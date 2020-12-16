@@ -4,7 +4,7 @@ import {Text, SafeAreaView, StatusBar} from 'react-native'
 
 import HeaderTransaction from '../../components/HeaderTransaction'
 
-import {useColors} from '../../hooks/theme'
+import {useTheme} from '../../hooks/theme'
 import {Container} from './styles'
 
 type ParamList = {
@@ -15,15 +15,10 @@ type ParamList = {
 
 const TransactionCreate: React.FC = () => {
   const {params} = useRoute<RouteProp<ParamList, 'TransactionCreate'>>()
-  const {colors} = useColors()
+  const {colors} = useTheme()
+
   return (
     <Container bg={colors.background}>
-      <StatusBar
-        translucent
-        barStyle="light-content"
-        backgroundColor="rgba(0, 0, 0, 0.251)"
-        // backgroundColor="red"
-      />
       <HeaderTransaction type={params.type} />
       <Text>{params.type}</Text>
     </Container>

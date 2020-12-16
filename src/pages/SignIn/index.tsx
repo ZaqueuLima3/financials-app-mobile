@@ -5,7 +5,7 @@ import {useNavigation} from '@react-navigation/native'
 import * as Yup from 'yup'
 
 import {useAuth} from '../../hooks/auth'
-import {useColors} from '../../hooks/theme'
+import {useTheme} from '../../hooks/theme'
 import logo from '../../assets/logo.png'
 import Input from '../../components/Input'
 import {Regular} from '../../components/Text'
@@ -33,7 +33,7 @@ const SignIn: React.FC = () => {
   const passwordInputRef = useRef<TextInput>(null)
 
   const {signIn} = useAuth()
-  const {colors} = useColors()
+  const {colors} = useTheme()
 
   const handleSignIn = useCallback(
     async (data: SignInFormData) => {

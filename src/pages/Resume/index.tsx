@@ -1,6 +1,6 @@
 import React, {useMemo} from 'react'
 import {useNavigation} from '@react-navigation/native'
-import {useColors} from '../../hooks/theme'
+import {useTheme} from '../../hooks/theme'
 import {useAuth} from '../../hooks/auth'
 
 import {BigTitle, Regular, Title} from '../../components/Text'
@@ -21,7 +21,7 @@ import {
 import avatar from '../../assets/avatar.png'
 
 const Resume: React.FC = () => {
-  const {colors} = useColors()
+  const {colors} = useTheme()
   const {user} = useAuth()
 
   const navigation = useNavigation()

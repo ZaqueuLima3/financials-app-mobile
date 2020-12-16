@@ -1,5 +1,5 @@
 import React from 'react'
-import {useColors} from '../../hooks/theme'
+import {useTheme} from '../../hooks/theme'
 
 import walpImage from '../../assets/walp.png'
 
@@ -16,7 +16,7 @@ import {
 import {Small, Title} from '../Text'
 
 const CardGoals: React.FC = () => {
-  const {colors} = useColors()
+  const {colors} = useTheme()
 
   return (
     <Container bg={colors.container}>

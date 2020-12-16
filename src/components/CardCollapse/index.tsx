@@ -1,7 +1,7 @@
 import React, {useCallback, useState} from 'react'
 import {format} from 'date-fns'
 import IconFeather from 'react-native-vector-icons/Feather'
-import {useColors} from '../../hooks/theme'
+import {useTheme} from '../../hooks/theme'
 import formatValue from '../../utils/formatValue'
 import {Title, Small, Regular} from '../Text'
 
@@ -41,7 +41,7 @@ const CardCollapse: React.FC<CardCollapseProps> = ({
   relatedMonth,
   loading = true,
 }) => {
-  const {colors} = useColors()
+  const {colors} = useTheme()
 
   const [isVisible, setIsVisible] = useState(false)
 

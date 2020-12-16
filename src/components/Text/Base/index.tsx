@@ -8,7 +8,7 @@ import {
 } from 'react-native'
 import {capitalize as textCapitalize} from '../../../utils'
 
-import {useColors} from '../../../hooks/theme'
+import {useTheme} from '../../../hooks/theme'
 
 import {
   ColorsPropType,
@@ -40,7 +40,7 @@ const Text: FC<Props> = ({
   ...props
 }: Props) => {
   const text = capitalize ? textCapitalize(children) : children
-  const {colors} = useColors()
+  const {colors} = useTheme()
   const getFontFamily = (bold: FontWeightPropType): string => {
     switch (bold) {
       case 'light':

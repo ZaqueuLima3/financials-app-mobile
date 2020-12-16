@@ -1,9 +1,9 @@
 import React from 'react'
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder'
-import {useColors} from '../../hooks/theme'
+import {useTheme} from '../../hooks/theme'
 
 const Skeleton: React.FC = () => {
-  const {colors} = useColors()
+  const {colors} = useTheme()
   return (
     <SkeletonPlaceholder backgroundColor={colors.background}>
       <SkeletonPlaceholder.Item

@@ -10,7 +10,7 @@ import {TextInputProperties} from 'react-native'
 import {useField} from '@unform/core'
 
 import {Container, TextInput, Icon} from './styles'
-import {useColors} from '../../hooks/theme'
+import {useTheme} from '../../hooks/theme'
 
 interface InputProps extends TextInputProperties {
   name: string
@@ -31,7 +31,7 @@ const Input: React.RefForwardingComponent<InputRef, InputProps> = (
   ref,
 ) => {
   const inputElementRef = useRef<any>(null)
-  const {colors} = useColors()
+  const {colors} = useTheme()
   const {registerField, fieldName, defaultValue = '', error} = useField(name)
   const inputValueRef = useRef<InputValueReference>({value: defaultValue})
 

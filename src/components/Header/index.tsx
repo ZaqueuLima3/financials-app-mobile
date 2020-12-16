@@ -3,7 +3,7 @@ import React, {useMemo} from 'react'
 import IconFeather from 'react-native-vector-icons/Feather'
 import {useNavigation} from '@react-navigation/native'
 import {useAuth} from '../../hooks/auth'
-import {useColors} from '../../hooks/theme'
+import {useTheme} from '../../hooks/theme'
 
 import avatar from '../../assets/avatar.png'
 import {Title} from '../Text'
@@ -12,7 +12,7 @@ import {Container, ProfileWrapper, ImageProfile, WelcomeWrapper} from './styles'
 
 const Header: React.FC = () => {
   const {user} = useAuth()
-  const {colors} = useColors()
+  const {colors} = useTheme()
 
   const navigation = useNavigation()
 

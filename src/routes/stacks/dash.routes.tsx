@@ -7,12 +7,12 @@ import TransactionCreate from '../../pages/TransactionCreate'
 
 import Header from '../../components/Header'
 
-import {useColors} from '../../hooks/theme'
+import {useTheme} from '../../hooks/theme'
 
 const DashboardStack = createStackNavigator()
 
 const DashboardStackScreen: React.FC = () => {
-  const {colors} = useColors()
+  const {colors} = useTheme()
   return (
     <DashboardStack.Navigator>
       <DashboardStack.Screen

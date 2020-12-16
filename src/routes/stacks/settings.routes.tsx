@@ -5,12 +5,12 @@ import {Platform} from 'react-native'
 import Header from '../../components/Header'
 import Settings from '../../pages/Settings'
 import Profile from '../../pages/Profile'
-import {useColors} from '../../hooks/theme'
+import {useTheme} from '../../hooks/theme'
 
 const SettingsStack = createStackNavigator()
 
 const SettingsStackScreen: React.FC = () => {
-  const {colors} = useColors()
+  const {colors} = useTheme()
   return (
     <SettingsStack.Navigator>
       <SettingsStack.Screen

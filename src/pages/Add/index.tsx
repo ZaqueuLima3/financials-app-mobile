@@ -4,7 +4,7 @@ import {TouchableOpacity} from 'react-native-gesture-handler'
 import Modal from 'react-native-modal'
 import Icon from 'react-native-vector-icons/Feather'
 import {Title, Regular} from '../../components/Text'
-import {useColors} from '../../hooks/theme'
+import {useTheme} from '../../hooks/theme'
 
 import {
   Container,
@@ -18,7 +18,7 @@ import {
 const AddModal: React.FC = () => {
   const [modalVisible, setModalVisible] = useState(false)
   const navigation = useNavigation()
-  const {colors} = useColors()
+  const {colors} = useTheme()
 
   const handleOpenPage = useCallback((route, params) => {
     setModalVisible(false)

@@ -6,7 +6,7 @@ import {useNavigation} from '@react-navigation/native'
 import * as Yup from 'yup'
 
 import api from '../../service/api'
-import {useColors} from '../../hooks/theme'
+import {useTheme} from '../../hooks/theme'
 import Input from '../../components/Input'
 import {Regular} from '../../components/Text'
 import getValidationErrors from '../../utils/getValidationErrors'
@@ -35,7 +35,7 @@ const SignIn: React.FC = () => {
   const emailInputRef = useRef<TextInput>(null)
   const passwordInputRef = useRef<TextInput>(null)
 
-  const {colors} = useColors()
+  const {colors} = useTheme()
 
   const handleSignUp = useCallback(
     async (data: SignupFormData) => {

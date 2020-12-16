@@ -1,6 +1,6 @@
 import React, {useCallback, useMemo} from 'react'
 import {FlatList} from 'react-native'
-import {useColors} from '../../hooks/theme'
+import {useTheme} from '../../hooks/theme'
 import {Regular} from '../Text'
 
 import {Container} from './styles'
@@ -11,7 +11,7 @@ interface SelectMonthProps {
 }
 
 const SelectMonth: React.FC<SelectMonthProps> = ({onPress, month}) => {
-  const {colors} = useColors()
+  const {colors} = useTheme()
   const months = useMemo(
     () => [
       'jan',
